@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <title>Sinch calling demo</title>
+    <!--Import Google Icon Font-->
+    <link rel="icon" type="image/png" href="./common/style/favicon-32x32.png" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./common/style/sample.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col s12"></div>
+      <div class="col s12 m2"></div>
+      <div class="col s12 m8">
+        <form class="token-input" id="demotype">
+          <div class="input-field">
+            <input
+              class="form-control"
+              type="password"
+              name="key"
+              id="key"
+              placeholder="Application key"
+              autofocus
+              style="display: none"
+              value="41c700d1-67d1-4a6a-b17f-2c4d1e86b6a2"
+            />
+          </div>
+          <div class="input-field">
+            <input
+              class="form-control"
+              type="password"
+              name="secret"
+              id="secret"
+              placeholder="Secret"
+              hidden
+              value="KPBO+ArT2EGzLzQjTaV77g=="
+            />
+          </div>
+          <input
+            placeholder="Enter user id"
+            type="text"
+            id="userid"
+            name="userid"
+            class="form-control"
+          />
+          <button
+            class="waves-effect waves-light btn-small center"
+            id="videocall"
+            type="submit"
+          >
+            <i class="large material-icons right">video_call</i>video
+          </button>
+          <button
+            class="waves-effect waves-light btn-small"
+            id="voicecall"
+            type="submit"
+          >
+            <i class="large material-icons right">phone_android</i>audio
+          </button>
+          <button
+            class="waves-effect waves-light btn-small"
+            id="numbercall"
+            type="submit"
+          >
+            <i class="large material-icons right">call</i>phone
+          </button>
+          <button
+            class="waves-effect waves-light btn-small"
+            id="sipcall"
+            type="submit"
+          >
+            <i class="large material-icons right">computer</i>SIP
+          </button>
+        </form>
+      </div>
+      <div class="col s12 m2"></div>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

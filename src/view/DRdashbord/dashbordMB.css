@@ -1,0 +1,155 @@
+
+.DRdashBordMB{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.NVBmobFDRdashBord{
+    position: absolute;
+    top: 0;
+    width: 94%;
+    display: flex;
+    justify-content: space-between;
+    border-radius:0 0 7vw 7vw;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 3%;
+    padding-top: 5%;
+}
+.NVBmobFDRdashBord h1{
+    font-size: 5vw;
+    font-weight: 500;
+}
+.NVBmobFDRdashBord svg{
+    width: 3vw;
+}
+.NVBmobFDRdashBord :nth-last-child(1){
+    width: 6vw;
+}
+.BODYmobFDRdashBord{
+    position: absolute;
+    top: 8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 92vh;
+}
+.BODYmobFDRdashBordNAVbotton{
+    position: relative;
+    height: 6vh;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 3vh;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;    
+}
+.BODYmobFDRdashBordNAVbotton :nth-child(1){
+    position: absolute;
+    transition: 1s;
+    left: 0;
+    width: 55%;
+    height: 100%;
+    border-radius: 3vh;
+    border: 0;
+    font-size: 4vw;
+    font-weight: 600;
+    z-index: 2;
+}
+.BODYmobFDRdashBordNAVbotton :nth-child(2){
+    position: absolute;
+    transition: 1s;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    border-radius: 3vh;
+    border: 0;
+    font-size: 4vw;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.BODYmobFDRdashBordCON{
+    width: 100%;
+    height: 84vh;
+    display: flex;
+    border-radius:7vw 7vw 0 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 12px;    
+}
+.BODYmobFDRdashBordCONSERCHbar{
+    width: 90%;
+    height: 5vh;
+    border-radius: 1vh;
+    background-color: white;
+    border: 0.2vw #F7227F solid;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.BODYmobFDRdashBordCONSERCHbar svg{
+    width: 10vw;
+}
+.BODYmobFDRdashBordCONSERCHbar input{
+    width: 80%;
+    font-size: 4vw;
+    font-weight: 500;
+    border: 0;
+}
+.BODYmobFDRdashBordCON ul{
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+.BODYmobFDRdashBordCON ul li{
+    padding: 2vh 0;
+    width: 90%;
+    height: fit-content;
+}
+.BODYmobFDRdashBordCON ul li div{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.BODYmobFDRdashBordCON ul li div a{
+    position: absolute;
+    left: 0;
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.BODYmobFDRdashBordCON ul li div img{
+    width: 100%;
+    height: 100%;
+}
+.BODYmobFDRdashBordCON ul li div span{
+    background-color: white;
+    border-radius: 4vw;
+    padding: 2vh 2vw;
+    width: 78vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 12px;    
+
+}
+.BODYmobFDRdashBordCON ul li div span h1{
+    font-size: 4vw;
+}
+
+

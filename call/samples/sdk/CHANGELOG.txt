@@ -1,0 +1,19 @@
+2.31.4
+  - Feature: Introduced compatibility with new signaling service
+  - Bugfix: Add ICE candidates only after remoteDescription has been set, to
+	avoid discarding ICE candidates
+
+2.29.10
+  - Bugfix: Improve the way internal call reports are submitted by fixing a few incomplete details
+
+2.28.14
+  - Feature: Not using UUID for call ids.
+
+2.27.2
+  - Bugfix: Internal logging fixes
+
+2.24.3
+  - Feature: CLI (Calling Line Identifier) allows setting of incoming caller to callee for in-app data to telephone calling based on purchased virtual voice number.
+  
+2.0.4
+  - New JavaScript SDK released

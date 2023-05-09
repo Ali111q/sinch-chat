@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sinch App</title>
+    <script src="https://cdn.sinch.com/latest/sinch.min.js"></script>
+  </head>
+  <body>
+	<section>
+
+<div id="call-container" style="display: none">
+	<input id="callee" placeholder="Enter callee" type="text" />
+	<button id="call">Call</button>
+  </div>
+	</section>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <button id="make-call-btn" onclick="makeCall()">Call User</button>
+<div id="call-controls" style="display: none">
+  <button id="answer-call-btn" onclick="answerCall()">Answer</button>
+  <button id="end-call-btn" onclick="endCall()">End Call</button>
+  <button id="mute-call-btn" onclick="muteCall()">Mute</button>
+  <button id="unmute-call-btn" onclick="unmuteCall()">Unmute</button>
+  <button id="disable-cam-btn" onclick="disableCam()">Disable Cam</button>
+  <button id="enable-cam-btn" onclick="enableCam()">Enable Cam</button>
+</div>
+<script>
+  var sinchClient = new SinchClient({
+	applicationKey: "41c700d1-67d1-4a6a-b17f-2c4d1e86b6a2",
+	applicationSecret: "KPBO+ArT2EGzLzQjTaV77g==",
+	environment: "sandbox",
+	onLogMessage: function (message) {
+	  console.log(message);
+	},
+  });
+  sinchClient.addEventListener("push", (event) => {
+	console.log("ServiceWorker Push: ", event);
+	const body = event.data.json();
+	event.waitUntil(
+	  clients
+		.matchAll({ includeUncontrolled: true, type: "window" })
+		.then((clients) => {
+		  clients.forEach((client) => {
+			client.postMessage({
+			  visible: client.visibilityState === "visible",
+			  data: body,
+			});
+		  });
+		})
+	);
+  });
+</script> -->

@@ -1,0 +1,654 @@
+
+
+@media (orientation: landscape){
+    @media screen and (min-width: 500px) {
+        /* ======== Dr View start for Pc ======== */
+        .patientsLIstDrView{
+            position: relative;
+            top: 6vw;
+            padding: 4vw 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: fit-content;
+            background-color: white;
+            border-radius: 1vw;
+        }
+        .patientsLIstDrView button{
+            top: 0;
+            position: absolute;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border: 0;
+            padding: 0.5vw;
+            border-radius: 0.5vw;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            transition: 0.5s;
+            border: #F7227F;
+        }
+        .patientsLIstDrView button:hover{
+            border: dashed 0.2vw #F7227F;
+        }
+        .patientsLIstDrView button:hover svg{
+            width: 2vw;
+        }
+
+        .patientsLIstDrView button h1{
+            font-size: 1.2vw;
+            font-weight: 400;
+        }
+        .patientsLIstDrView button svg{
+            transition: 0.5s;
+            width: 0vw;
+        }
+
+        .patientsLIstDrViewBody{
+            z-index: 1;
+            width: 99%;
+            height: fit-content;
+            background-color: white;
+            border-radius: 1vw;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+        .patientsLIstDrViewItem{
+            position: relative;
+            width: 21.65%;
+            height: fit-content;
+            padding: 0.83%;
+            margin: 0.83%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            float: left;
+            margin-top: 3vw;
+            padding-top: 0;
+
+        }
+        .patientsLIstDrViewItem span{
+            z-index: 2;
+            top: -3vw;
+            position: absolute;
+            align-self: center;
+            width: 6vw;
+            height: 6vw;
+            border-radius: 50%;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            overflow: hidden;
+        }
+        .patientsLIstDrViewItem span img{
+            width: 100%;
+            height: 100%;
+        }
+        .patientsLIstDrViewItem div{
+            width: 90%;
+            height: 15vw;
+            z-index: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            border-radius: 1vw;
+            padding: 1vw;
+            padding-top:3vw;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            overflow: hidden;
+        }
+        #borderTop{
+            all:unset;
+            position: absolute;
+            top: -2vw;
+            width: 50vw;
+            border: #0199EC dashed 1.1vw;
+        }
+        #borderBottom{
+            all:unset;
+            position: absolute;
+            bottom: -2vw;
+            width: 50vw;
+            border: #0199EC dashed 1.1vw;
+        }
+        #borderLeft{
+            all:unset;
+            top: 1vw;
+            position: absolute;
+            left: -2.19vw;
+            height: 50vw;
+            border: #0199EC dashed 1.2vw;
+        }
+        #borderRight{
+            all:unset;
+            top: 1vw;
+            position: absolute;
+            right: -2.19vw;
+            height: 50vw;
+            border: #0199EC dashed 1.2vw;
+        }
+        .patientsLIstDrViewItem div h1{
+            font-size: 1.5vw;
+        }
+        .patientsLIstDrViewItem{}
+        
+        /* ======== Dr View Add patient ======== */
+        .AddNewPatient{
+            position: relative;
+            top: 7vw;
+            height: fit-content;
+            width: 98%;
+            padding-bottom: 13vw;
+            display: flex;
+            justify-content: space-between;
+
+        }
+        .AddNewPatientNAV{
+            width: 18%;
+            height: fit-content;
+        }
+        .AddNewPatientNAV span{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            width:40%;
+            height: 7vw;
+            padding: 2.5%;
+            margin: 2.5%;
+            border-radius: 1vw;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            float: left;
+        }
+        .AddNewPatientNAV span svg{
+            min-width:70%;
+            max-height: 70%;
+        }
+        .AddNewPatientBody{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .AddNewPatientDRifo{
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .AddNewPatientDRifo li{
+            width: 20%;
+            display: flex;
+            justify-content: center;
+        }
+        .AddNewPatientDRifo li a{
+            width: 7vw;
+            height: 7vw;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .AddNewPatientDRifo li a img{
+            width: 100%;
+            height: 100%;
+        }
+        .AddNewPatientDRifo li a svg{
+            width: 50%;
+        }
+        .AddNewPatientDRifo div{
+            position: relative;
+            width: 75%;
+            padding: 2.5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            background-color: white;
+            border-radius: 1vw;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+        }
+        .AddNewPatientDRifo div span{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height:fit-content;
+            width: 50%;
+        }
+        .AddNewPatientDRifo div span h1{
+            font-size: 1.5vw;
+            font-weight: 900;
+            word-break: break-all;
+            display: flex;
+        }
+        .AddNewPatientDRifo div span h1 input{
+            font-size: 1.5vw;
+            font-weight: 500;
+            border: 0;
+            border-bottom: 0.1vw solid;
+        }
+        .AddNewPatientDRifo div span h1 select{
+            width: fit-content;
+            padding-left: 10%;
+            background-position-x:5%;
+            font-size: 1.5vw;
+            font-weight: 500;
+            border: 0;
+            border-bottom: 0.1vw solid;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .AddNewPatientDRifo div a{
+            border-radius: 1vw;
+            position: absolute;
+            top: -3.5vw;
+            right: 1vw;
+            overflow: hidden;
+            width: 7vw;
+            height: 7vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .AddNewPatientDRifo div a img{
+            width: 80%;
+            height: 80%;
+        }
+        .AddNewPatientBodyAddControlar{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .AddNewPatientBodyAddControlar div{
+            width: 35%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 0.5vw;
+        }
+        .AddNewPatientBodyAddControlar div span{
+            width: 45%;
+            display: flex;
+            justify-content: end;
+        }
+        .AddNewPatientBodyAddControlar div span button{
+
+            width: fit-content;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.3vw 1vw;
+            border: 0.1vw transparent solid;
+            background-color: white;
+            border-radius: 0.5vw;
+            transition: 1s;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+        }
+        .hoverAddDrugs svg{
+            width: 2vw;
+        }
+        .hoverAddDrugs{
+            flex-direction: row-reverse;
+            transition: 1s;
+        }
+        .hoverAddDrugsh1{
+            display: none;
+            opacity: 0;
+            transition: 1s;
+        }
+        .hoverAddDrugs:hover .hoverAddDrugsh1{
+            opacity: 1;
+            display: flex;
+        }
+        .hoverAddDrugs:hover{
+            border: #F7227F 0.1vw solid;
+        }
+        .hoverAddTest svg{
+            width: 0vw;
+            transition: 1s;
+        }
+        .hoverAddTest:hover{
+            border: #F7227F 0.1vw solid;
+        }
+        .hoverAddTest:hover  svg{
+            width: 2vw;
+        }
+        .AddNewPatientBodyAddControlar ul{
+            opacity: 0;
+            width: 50%;
+            background-color: white;
+            box-sizing: 1vw;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            height: fit-content;
+            display: flex;
+            margin-left: 25%;
+            overflow: hidden;
+            border-radius: 1vw;
+            justify-content: space-between;
+            transition: 1s;
+        }
+        .AddNewPatientBodyAddControlar ul li{
+            cursor: pointer;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 20%;
+            padding: 2.5%;
+            
+        }
+        .AddNewPatientBodyAddControlar ul li:hover{
+            color: #F7227F;
+            font-weight: 900;
+        }
+        .AddNewPatientBodyAddControlar ul li svg{
+            width: 1vw;
+        }
+
+        .AddNewPatientUl{
+
+            position: absolute;
+            bottom: 0;
+            left: -3vw;
+            width: fit-content;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: fit-content;
+        }
+        .AddNewPatientUl:hover li{
+            opacity: 1;
+        }
+
+        .AddNewPatientUl li{
+            opacity: 0;
+            transition: 1s;
+            cursor: pointer;
+            border-style: solid;
+            border-color: white;
+            border-width: 0.2vw;
+            margin: 0.5vw;
+            width: 7vw;
+            height:7vw;
+            border-radius: 50%;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5vw;
+            font-weight: 900;
+        }
+        .AddNewPatientUl li:hover{
+            border-color:#F7227F;
+            border-style: dashed;
+        }
+        #AddNewPatientUlLI1{
+            border-style: solid;
+            border-color: #0199EC;
+            border-width: 0.2vw;
+            color: #0199EC;
+        }
+        #AddNewPatientUlLI1:hover{
+            color: white;
+            background-color: #0199EC;
+        }
+
+        #AddNewPatientUlLI2{
+            border-style: solid;
+            border-color: white;
+            border-width: 0.2vw;
+            color: white;
+            background-color: #F7227F;
+        }
+        #AddNewPatientUlLI2:hover{
+            border-color:#F7227F;
+            border-style: dashed;
+            color: #F7227F;
+            border-width: 0.2vw;
+            background-color: white;
+        }
+        #AddNewPatientUlLI3{
+            border-style: solid;
+            border-color: white;
+            border-width: 0.2vw;
+            color: white;
+            background-color: #0199EC;
+        }
+        #AddNewPatientUlLI3:hover{
+            border-color:#0199EC;
+            border-style: dashed;
+            color: #0199EC;
+            border-width: 0.2vw;
+            background-color: white;
+        }
+        .AddNewPatientUl li svg{
+            width:50%;
+        }
+
+
+
+
+        
+
+
+
+        /* ======== Dr View start for Pc ======== */
+        .whiteCON{
+            background-color: white;
+            width: 100%;
+            height: 4vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+        .NewDashbordApp{
+            width: 96vw;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 96vh;
+            margin: 0;
+            padding: 2vh 2vw;
+            z-index: 1;
+            overflow-y: scroll;
+            border-radius: 1vw;
+        
+        }
+        .NewDashbordAppNavBar{
+            position: fixed;
+            top: 2vh;
+            width: 94%;
+            height: fit-content;
+            background-color: #0199EC;
+            border-radius: 1vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5%;
+            z-index: 3;
+        }
+        .NewDashbordAppNavBar a{
+            width: 1%;
+            padding-left: 1vw;
+            height: fit-content;
+        }
+        .NewDashbordAppNavBar a svg{
+            width: 100%;
+        }
+        .NewDashbordAppNavBar ul{
+            width: 50%;
+            align-items: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .NewDashbordAppNavBar ul li{
+            width: 20%;
+            cursor: pointer;
+            color: white;
+            font-weight: 400;
+            font-size: 1.5vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5%;
+            transition: 0.5s;
+        }
+        #NewDashbordAppNavBarselcted{
+            border-radius: 1vw;
+            background-color: white;
+            color: #0199EC;
+        }
+        .NewDashbordAppNavBar span{
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            padding: 0.5%;
+            border-radius: 2vw;
+            background-color: white;
+        }
+        .NewDashbordAppNavBar span svg{
+            width: 8%;
+        }
+        .NewDashbordAppNavBar span input{
+            width: 85%;
+            font-size: 1.5vw;
+            background-color: transparent;
+            border: 0;
+        }
+        .NewDashbordAppPatients{
+            position: absolute;
+            top: 6vw;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 94%;
+            background-color: white;
+            border-radius: 1vw;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            overflow: hidden;
+        }
+        .NewDashbordAppPatients ul{
+            width: 100%;
+            height: fit-content;
+        }
+        .NewDashbordAppPatients ul li{
+            width: 96%;
+            padding: 0 2%;
+            height: 7vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #F8F8F8;
+        }
+        .NewDashbordAppPatients ul li h1{
+            font-size: 1.5vw;
+        }
+        .NewDashbordAppPatients ul li h2{
+            font-size: 1.4vw;
+            margin: 0;
+            padding: 0;
+        }
+        .NewDashbordAppPatients ul li span{
+            display: flex;
+            align-items: center;
+        }
+        .NewDashbordAppPatients ul li span div{
+            width: 6vw;
+            height: 6vw;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .NewDashbordAppPatients ul li span div img{
+            width: 100%;
+            height: 100%;
+        }
+        .NewDashbordAppPatients ul li span h1{
+            font-size: 1.5vw;
+            padding-left: 1vw;
+        }
+        .PatientsShet{
+            margin-top: 6vw;
+            width: 98%;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .NewDashbordAppPatientsButton{
+            width: 25%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .NewDashbordAppPatientsButton button{
+            width: 45%;
+            color: white;
+            font-size: 2vw;
+            font-weight: 500;
+            padding: 0.5vw;
+            border-radius: 1vw;
+            border: 0;
+            background-color: #0199EC;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .PatientsShetDRifo{
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .PatientsShetDRifo a{
+            width: 8vw;
+            height: 8vw;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .PatientsShetDRifo a img{
+            width: 100%;
+            height: 100%;
+        }
+        .PatientsShetDRifo div{
+            width:77%;
+            height: fit-content;
+            padding: 2%;
+            border-radius: 1vw;
+            display: flex;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .PatientsShetDRifo{
+            
+        }
+        .PatientsShetDRifo{
+            
+        }
+        .PatientsShetDRifo{
+            
+        }
+        .PatientsShetDRifo{
+            
+        }
+        .PatientsShetDRifo{
+            
+        }
+    }
+}

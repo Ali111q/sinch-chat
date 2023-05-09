@@ -1,0 +1,108 @@
+{
+  "name": "azu_web",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "-": "^0.0.1",
+    "@ant-design/icons": "^5.0.1",
+    "@ffmpeg/core": "^0.11.0",
+    "@ffmpeg/ffmpeg": "^0.11.6",
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@reduxjs/toolkit": "^1.9.1",
+    "@testing-library/dom": "^9.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.2.0",
+    "audio-react-recorder": "^1.0.4",
+    "axios": "^1.1.3",
+    "child_process": "^1.0.2",
+    "eslint-plugin-disable": "^2.0.3",
+    "framer-motion": "^10.12.4",
+    "google-maps-react": "^2.0.6",
+    "js-cookie": "^3.0.1",
+    "laravel-echo": "^1.15.0",
+    "nouislider-react": "^3.4.1",
+    "plyr-react": "^5.2.0",
+    "pusher-js": "^8.0.1",
+    "react": "^18.2.0",
+    "react-audio-player": "^0.17.0",
+    "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.5",
+    "react-easy-crop": "^4.7.3",
+    "react-file-base64": "^1.0.3",
+    "react-geolocated": "^4.0.3",
+    "react-google-map-picker": "^1.2.3",
+    "react-google-maps": "^9.4.5",
+    "react-h5-audio-player": "^3.8.6",
+    "react-helmet-async": "^1.3.0",
+    "react-html5video": "^2.5.1",
+    "react-image-crop": "^10.0.9",
+    "react-insta-stories": "^2.4.2",
+    "react-media-recorder": "^1.6.6",
+    "react-mic": "^12.4.6",
+    "react-nouislider": "^2.0.1",
+    "react-otp-input": "^2.4.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.4.3",
+    "react-scripts": "5.0.1",
+    "react-scroll-ondrag": "^3.0.0",
+    "react-zoom-pan-pinch": "^3.0.7",
+    "recorder-js": "^1.0.7",
+    "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2",
+    "sinch-rtc": "^1.4.12",
+    "socket.io-client": "^4.6.1",
+    "stories-react": "^1.0.18",
+    "styled-components": "^5.3.6",
+    "swiper": "^8.4.4",
+    "uuid": "^9.0.0",
+    "video.js": "^8.3.0",
+    "wavesurfer": "^1.3.4",
+    "wavesurfer.js": "^6.6.3",
+    "web-vitals": "^2.1.4",
+    "websocket": "^1.0.34",
+    "websocket-stream": "^5.5.2",
+    "wrtc": "^0.4.7",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "call": "cd call/samples && npx npx http-server"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.7.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.32.2"
+  }
+}

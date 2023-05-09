@@ -1,0 +1,185 @@
+.nchat .search {
+  background: #f6f6f6;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5vw 1.5vw;
+  border-radius: 0.3vw;
+}
+.nchat .search input {
+  background: transparent;
+  text-align: end;
+  border: none;
+  outline: none;
+  flex: 1;
+  width: 100%;
+}
+.nchat .search input::placeholder {
+  font-size: 1vw;
+}
+.items {
+  overflow-y: scroll;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1vw;
+}
+.items .item {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 0.5vw 0.8vw;
+  color: #626262;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+}
+
+.items .item:hover {
+  background: #eeeeeea9;
+}
+.items .item.opened{
+  background: #eeeeeea9;
+}
+
+.items .item .img_container {
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.items .item .img_container img {
+  width: 100%;
+  height: 100%;
+}
+.items .item .ninfo {
+  padding: 0 15px;
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  text-align: end;
+  flex: 1;
+}
+.items .item .ninfo h4 {
+  font-size: 1vw;
+  margin-bottom: 5px;
+}
+.items .item .ninfo p {
+  font-size: 0.7vw;
+  align-self: flex-end;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.items .item .msgInfo p {
+  font-size: 0.6vw;
+  margin-bottom: 0.3vw;
+
+}
+.items .item .msgInfo span {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  padding: 2px 5px;
+  background: #ec1c2e;
+  color: #000;
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+.chat__menu{
+  background: #fff;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.209);
+  position: absolute;
+  left: 10px;
+}
+.chat__menu.show{
+  display: block;
+}
+.chat__menu.hidden{
+  display: none;
+}
+.chat__menu button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fc0005;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+}
+.chat__menu button h6{
+  margin-left: 5px;
+}
+@media screen and (max-width: 991px) {
+  .items .item .ninfo h4 {
+    font-size: 1.5vw;
+  }
+  .items .item .ninfo p {
+    font-size: 0.7vw;
+  }
+  .items .item .msgInfo p {
+    font-size: 0.7vw;
+    margin-bottom: 0;
+  }
+  .items .item .msgInfo span {
+    width: 10px;
+    height: 10px;
+    padding: 1px 3px;
+    font-size: 6px;
+  }
+  .nchat.mobile {
+    margin-top: 8vw;
+  }
+  .nchat.mobile .chat__list .item {
+    margin: 1vw 0;
+    padding: 2vw;
+  }
+  .nchat.mobile .chat__list .item .ninfo h4 {
+    font-size: 4vw;
+  }
+  .nchat.mobile .chat__list .item .ninfo p {
+    font-size: 3vw;
+  }
+  .nchat.mobile .chat__list .items .item .img_container {
+    width: 13vw;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .nchat.mobile .chat__list .items .item .msgInfo p {
+    font-size: 2vw;
+    margin-bottom: 0.8vw;
+  }
+  .nchat.mobile .chat__list .items .item .msgInfo span {
+    width: 15px;
+    height: 15px;
+    padding: 3px 6px;
+    font-size: 12px;
+  }
+  .nchat.mobile .search {
+    padding: 2vw;
+  }
+  .nchat.mobile .items {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .nchat.mobile .chat__list {
+    padding-top: 5vw;
+  }
+  .nchat.mobile .items .item .img_container {
+    width: 7vw;
+  }
+  .nchat.mobile .items .item .ninfo h4 {
+    font-size: 2vw;
+  }
+  .nchat.mobile .items .item .ninfo p {
+    font-size: 1.4vw;
+  }
+  .nchat.mobile .items .item .msgInfo p {
+    font-size: 1vw;
+  }
+}
