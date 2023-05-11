@@ -24,8 +24,7 @@ export default class VideoCallSinchClientWrapper {
     this.sinchClient.addListener(this.#sinchClientListener());
     this.sinchClient.setSupportManagedPush();
     this.sinchClient.start();
-
-    console.log(sinchClient);
+    this.sendNot = () => this.sinchClient.relayRemotePushNotification("Hello");
   }
 
   async makeCall(callee) {
@@ -56,7 +55,6 @@ export default class VideoCallSinchClientWrapper {
             console.error(error);
           });
       },
-
       onClientFailed: (sinchClient, error) => {
         console.log("Sinch - Start client failed");
         console.error(error);
@@ -70,10 +68,13 @@ export default class VideoCallSinchClientWrapper {
         this.ui.onCallProgressing(call);
       },
       onCallEstablished: (call) => {
-        this.ui.onCallEstablished(call);
+        this.ui.onCallEstablished(call, this.sinchClient);
       },
       onCallEnded: (call) => {
         this.ui.onCallEnded(call);
+      },
+      onRemoteTrack: (call, track) => {
+        this.ui.onRemoteTrack(call, track);
       },
     });
   }

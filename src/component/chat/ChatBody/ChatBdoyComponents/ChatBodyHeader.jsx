@@ -9,21 +9,25 @@ const ChatBodyHeader = () => {
   const dispatch = useDispatch();
   const isPC = useOrientationchange();
   const { user } = useSelector((state) => state.chat.data.chatData);
+  const { image } = JSON.parse(localStorage.getItem("userData"));
   function handleCall(type) {
     dispatch(callAction.setShowCall({ showCall: true }));
     sessionStorage.setItem("userToCall", JSON.stringify(user));
     const iframe = document.querySelector("iframe");
-    iframe.contentWindow.postMessage("start_call", "*");
+    iframe.contentWindow.postMessage(
+      `{"message": "start_call", "type": "${type}", "image": "${image}"}`,
+      "*"
+    );
     console.log(iframe);
   }
   return (
     <>
       <div className="chat-body-header">
         <div className="chat-body-icons">
-          <div className="videoCall" onClick={handleCall}>
+          <div className="videoCall" onClick={() => handleCall("video")}>
             {videoCall}
           </div>
-          <div className="audioCall" onClick={handleCall}>
+          <div className="audioCall" onClick={() => handleCall("audio")}>
             {audioCall}
           </div>
         </div>

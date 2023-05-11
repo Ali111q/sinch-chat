@@ -7,7 +7,9 @@ body {
   width: 100%;
   max-width: 640px;
 }
-
+html{
+  overflow: hidden;
+}
 fieldset {
   width: 90%;
   border-style: none;
@@ -108,7 +110,7 @@ fieldset {
 }
 
 .outgoing-video {
-  padding: 2% 2% 0 2%;
+  margin: 2% 2% 0 2%;
   width: 30%;
   position: relative;
   float: left;

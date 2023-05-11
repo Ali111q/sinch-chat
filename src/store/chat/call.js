@@ -13,6 +13,7 @@ const call = createSlice({
       state.showCall = action.payload.showCall;
     },
     setCallType: (state, action) => {
+      console.log(action.payload.callType);
       state.callType = action.payload.callType;
     },
     setMinScreen: (state, action) => {
