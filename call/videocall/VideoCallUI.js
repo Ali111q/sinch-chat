@@ -13,6 +13,7 @@ import {
   SHOW,
   setText,
 } from "../common/common.js";
+import { ip, url } from "./constants.js";
 const temp = window.location.search.slice(
   window.location.search.indexOf("image=")
 );
@@ -112,7 +113,7 @@ export default class VideoCallUI {
     this.time = document.createElement("p");
     this.interval = null;
     this.callerInfo = null;
-    console.log("is camera off: " + this.isCameraOff);
+
     setState("call", DISABLE);
     setState("answer", DISABLE);
     setState("hangup", DISABLE);
@@ -132,7 +133,8 @@ export default class VideoCallUI {
         )
         .join(",")}}`
     );
-    this.isCameraOff = this.params.type ? true : false;
+    this.isCameraOff = type === "audio" ? true : false;
+    console.log("is camera off: " + this.isCameraOff);
     this.params.image = image;
     this.params.my_image = my_image;
     document.getElementById(
@@ -151,6 +153,7 @@ export default class VideoCallUI {
       const data = JSON.parse(event.data);
       if (data.message === "start_call") {
         type = data.type;
+        this.isCameraOff = data.type;
         my_image = data.image;
         document.getElementById("call").click();
         console.log(event.data);
@@ -215,7 +218,7 @@ export default class VideoCallUI {
     this.playStream(call.outgoingStream, "outgoing", false, false);
     this.muteVideoStream("outgoing-video");
     fetch(
-      `http://192.168.0.114/api/get-data-by-id?id=${this.params.rec_id.slice(
+      `${url}/get-data-by-id?id=${this.params.rec_id.slice(
         this.params.rec_id.indexOf("-") + 1
       )}`
     )
@@ -246,6 +249,7 @@ export default class VideoCallUI {
     document.body.classList.remove("recive_call");
     this.handleMuteClick(call);
     this.handleVideoCloseClick(call);
+    this.handleChangeScreen();
     this.pauseRingtone();
     setVisibility("videos-container", SHOW);
     this.interval = setInterval(() => {
@@ -353,7 +357,20 @@ export default class VideoCallUI {
       .getElementById("call")
       .addEventListener("click", () => this.makeCall());
   }
-
+  handleChangeScreen() {
+    let outgoingStream = document.getElementById("outgoing-video");
+    outgoingStream.removeEventListener("click", this.handleScreen);
+    this.handleScreen = () => {
+      const outgoing = document.getElementById("outgoing-video");
+      const incoming = document.getElementById("incoming-video");
+      console.log(outgoingStream);
+      incoming.className = "outgoing-video";
+      incoming.id = "outgoing-video";
+      outgoing.className = "incoming-video";
+      outgoing.id = "incoming-video";
+    };
+    outgoingStream.addEventListener("click", this.handleScreen);
+  }
   handleHangupClick(call) {
     const hangupElement = document.getElementById("hangup");
     hangupElement.removeEventListener("click", this.handleHangup);
@@ -384,7 +401,7 @@ export default class VideoCallUI {
     mic.addEventListener("click", this.handleMic);
   }
   handleVideoNotification(action) {
-    fetch("http://192.168.0.114:8000/api/call/send", {
+    fetch(`${ip}:8000/api/call/send`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${this.params.token}`,
