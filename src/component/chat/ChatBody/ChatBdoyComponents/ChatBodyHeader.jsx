@@ -10,9 +10,9 @@ const ChatBodyHeader = () => {
   const isPC = useOrientationchange();
   const { user } = useSelector((state) => state.chat.data.chatData);
   const { image } = JSON.parse(localStorage.getItem("userData"));
-  function handleCall(type) {
+  async function handleCall(type) {
     dispatch(callAction.setShowCall({ showCall: true }));
-    sessionStorage.setItem("userToCall", JSON.stringify(user));
+    await sessionStorage.setItem("userToCall", JSON.stringify(user));
     const iframe = document.querySelector("iframe");
     iframe.contentWindow.postMessage(
       `{"message": "start_call", "type": "${type}", "image": "${image}"}`,

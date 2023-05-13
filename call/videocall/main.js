@@ -1,3 +1,7 @@
+const hangup = document.getElementById("hangup");
+hangup.addEventListener("click", () => {
+  window.parent.postMessage("end__call", "*");
+});
 function minCall() {
   const exitFullScreen = document.getElementById("exit_fullscreen");
   const body = document.body;

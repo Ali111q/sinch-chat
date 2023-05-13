@@ -152,8 +152,7 @@ export default class VideoCallUI {
     window.addEventListener("message", function (event) {
       const data = JSON.parse(event.data);
       if (data.message === "start_call") {
-        type = data.type;
-        this.isCameraOff = data.type;
+        this.isCameraOff = data.type === "audio" ? true : false;
         my_image = data.image;
         document.getElementById("call").click();
         console.log(event.data);

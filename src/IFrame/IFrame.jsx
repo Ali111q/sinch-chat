@@ -3,17 +3,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { callAction } from "../store/chat/call";
 
 const IFrame = () => {
-  const { showCall, CallType, showMinScreen } = useSelector(
-    (state) => state.call
-  );
+  const {
+    showCall,
+    CallType: type,
+    showMinScreen,
+  } = useSelector((state) => state.call);
   const [call, setCall] = useState(false);
-  const [callType, setCallType] = useState("voicecall");
+  const [callType, setCallType] = useState("audio");
   const [minScreen, setMinScreen] = useState(false);
   useEffect(() => {
     setCall(showCall);
-    setCallType(callType);
+    setCallType(type);
     setMinScreen(showMinScreen);
-  }, [showCall, callType, showMinScreen]);
+  }, [showCall, type, showMinScreen]);
   const dispatch = useDispatch();
   const user = JSON.parse(sessionStorage.getItem("userToCall"));
   const { image, id, token } = JSON.parse(
