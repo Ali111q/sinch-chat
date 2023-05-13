@@ -59,19 +59,6 @@ const ChatScreen = (props) => {
       dispatch(chatAction.orderChats({ id: e.id, chat: e }));
     });
   }, []);
-  useEffect(() => {
-    Api({
-      url: getChat,
-      method: "get",
-    }).then((e) => {
-      console.log(e);
-      dispatch(
-        chatAction.setChatsList({
-          chats: e.data.data,
-        })
-      );
-    });
-  }, []);
   const isPC = useOrientationchange();
   return <>{isPC ? <Desctop /> : <Mobile />}</>;
 };

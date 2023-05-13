@@ -134,7 +134,6 @@ export default class VideoCallUI {
         .join(",")}}`
     );
     this.isCameraOff = type === "audio" ? true : false;
-    console.log("is camera off: " + this.isCameraOff);
     this.params.image = image;
     this.params.my_image = my_image;
     document.getElementById(
@@ -155,13 +154,11 @@ export default class VideoCallUI {
         this.isCameraOff = data.type === "audio" ? true : false;
         my_image = data.image;
         document.getElementById("call").click();
-        console.log(event.data);
       }
     });
     window.addEventListener("message", function (event) {
       const data = event.data;
       this.callerInfo = data.from_user;
-      console.log(this.callerInfo);
       if (data.message === "cameraOff") {
         const videoImageContainer = document.getElementById(
           "video-image-container-incoming"
@@ -238,10 +235,6 @@ export default class VideoCallUI {
 
   onCallProgressing(call) {
     this.setStatus(`Call progressing ${call.remoteUserId}`);
-  }
-  onRemoteTrack(call, track) {
-    console.log("There Is Track");
-    console.log(track);
   }
   onCallEstablished(call, sinchClient) {
     this.setStatus(`Call established with ${call.remoteUserId}`);

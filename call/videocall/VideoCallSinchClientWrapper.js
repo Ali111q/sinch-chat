@@ -72,9 +72,6 @@ export default class VideoCallSinchClientWrapper {
       onCallEnded: (call) => {
         this.ui.onCallEnded(call);
       },
-      onRemoteTrack: (call, track) => {
-        this.ui.onRemoteTrack(call, track);
-      },
     });
   }
 }
