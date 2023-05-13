@@ -101,20 +101,23 @@ viewBox="0 0 24 24"
 />
 </svg>`;
 let type = "audio";
-let my_image;
+let my_image = "";
+let second = 0;
 const image = temp.slice(temp.indexOf("h"), temp.indexOf("&"));
 export default class VideoCallUI {
   constructor(sinchClientWrapper) {
     this.sinchClientWrapper = sinchClientWrapper;
     this.handleMakeCallClick();
     this.isMute = false;
-    this.isCameraOff = type === "audio" ? true : false;
+    this.time = document.createElement("p");
+    this.interval = null;
+    this.callerInfo = null;
     console.log("is camera off: " + this.isCameraOff);
     setState("call", DISABLE);
     setState("answer", DISABLE);
     setState("hangup", DISABLE);
     this.params = JSON.parse(
-      `{${window.location.search
+      `{ ${window.location.search
         .replaceAll("=", ":")
         .replaceAll("&", ",")
         .slice(1)
@@ -129,6 +132,7 @@ export default class VideoCallUI {
         )
         .join(",")}}`
     );
+    this.isCameraOff = this.params.type ? true : false;
     this.params.image = image;
     this.params.my_image = my_image;
     document.getElementById(
@@ -150,6 +154,26 @@ export default class VideoCallUI {
         my_image = data.image;
         document.getElementById("call").click();
         console.log(event.data);
+      }
+    });
+    window.addEventListener("message", function (event) {
+      const data = event.data;
+      this.callerInfo = data.from_user;
+      console.log(this.callerInfo);
+      if (data.message === "cameraOff") {
+        const videoImageContainer = document.getElementById(
+          "video-image-container-incoming"
+        );
+        const imageCircle = document.getElementById("circle__image-incoming");
+        videoImageContainer && (videoImageContainer.style.display = "block");
+        imageCircle && (imageCircle.style.display = "flex");
+      } else if (data.message === "cameraOn") {
+        const videoImageContainer = document.getElementById(
+          "video-image-container-incoming"
+        );
+        const imageCircle = document.getElementById("circle__image-incoming");
+        videoImageContainer && (videoImageContainer.style.display = "none");
+        imageCircle && (imageCircle.style.display = "none");
       }
     });
   }
@@ -179,8 +203,6 @@ export default class VideoCallUI {
     });
   }
   onIncomingCall(call) {
-    this.sinchClientWrapper.sendNot();
-    this.handleVideoCloseClick();
     this.setStatus(`Incoming call from ${call.remoteUserId}`);
     this.handleAnswerClick(call);
     this.handleHangupClick(call);
@@ -226,6 +248,14 @@ export default class VideoCallUI {
     this.handleVideoCloseClick(call);
     this.pauseRingtone();
     setVisibility("videos-container", SHOW);
+    this.interval = setInterval(() => {
+      second += 1;
+      this.time.innerText = `${Math.floor(second / 60)
+        .toString()
+        .padStart(2, "0")}:${Math.floor(second - Math.floor(second / 60) * 60)
+        .toString()
+        .padStart(2, "0")}`;
+    }, 1000);
     document.getElementById("info").style.display = "none";
     setVisibility("calldestination", HIDE);
     setState("call", DISABLE);
@@ -249,7 +279,11 @@ export default class VideoCallUI {
     setAnswerPulse(IDLE);
     this.removeVideoStream("outgoing-video");
     this.removeVideoStream("incoming-video");
+    this.time.innerText = "00:00";
+    second = 0;
+    clearInterval(this.interval);
     window.parent.postMessage("end__call", "*");
+    window.location.reload();
   }
 
   playStream(stream, direction, mute = true, emptyContainer = true) {
@@ -262,26 +296,33 @@ export default class VideoCallUI {
     const circleImage = document.createElement("div");
     const imgCircle = document.createElement("img");
     circleContainer.setAttribute("class", "circle__image");
-    circleContainer.setAttribute("id", "circle__image");
+    circleContainer.setAttribute("id", `circle__image-${direction}`);
     circleImage.setAttribute("class", "circle__image-container");
-    circleImage.setAttribute("id", "circle__image-container");
+    circleImage.setAttribute("id", `circle__image-container`);
     imgCircle.setAttribute("class", "circle__image-img");
-    imgCircle.setAttribute("id", "circle__image-img");
-
+    imgCircle.setAttribute("id", `circle__image-img`);
+    console.log("wijfweoifjewoifjweoi");
     console.log(my_image, image);
+    const userData = JSON.parse(document.cookie.split("userData=")[1]);
+    console.log(userData);
     if (direction === "incoming") {
-      videoImage.src = my_image;
-      imgCircle.src = my_image;
-    } else {
       videoImage.src = image;
       imgCircle.src = image;
+      circleContainer.appendChild(this.time);
+    } else {
+      videoImage.src = userData.image;
+      imgCircle.src = userData.image;
     }
     circleImage.appendChild(imgCircle);
     circleContainer.appendChild(circleImage);
+
     videoImageContainer.appendChild(videoImage);
     videoElement.appendChild(videoImageContainer);
     videoElement.appendChild(circleContainer);
-    videoImageContainer.setAttribute("id", "video-image-container");
+    videoImageContainer.setAttribute(
+      "id",
+      `video-image-container-${direction}`
+    );
     videoImageContainer.setAttribute("class", "video-image-container");
     videoElement.setAttribute("id", `${direction}-video`);
     videoElement.setAttribute("class", `${direction}-video`);
@@ -342,26 +383,49 @@ export default class VideoCallUI {
     };
     mic.addEventListener("click", this.handleMic);
   }
+  handleVideoNotification(action) {
+    fetch("http://192.168.0.114:8000/api/call/send", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${this.params.token}`,
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to_user: +this.params.rec_id.slice(this.params.rec_id.indexOf("-") + 1),
+        from_user: +this.params.user_id.slice(
+          this.params.rec_id.indexOf("-") + 1,
+          this.params.rec_id.indexOf("}")
+        ),
+        message: action,
+        type: "camera",
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  }
   handleVideoCloseClick(call) {
     const video = document.getElementById("vidoeControll");
     const videoImageContainer = document.getElementById(
-      "video-image-container"
+      "video-image-container-outgoing"
     );
-    const imageCircle = document.getElementById("circle__image");
+    const imageCircle = document.getElementById("circle__image-outgoing");
     video.removeEventListener("click", this.handleCloseVideo);
     this.handleCloseVideo = () => {
       if (this.isCameraOff) {
         call?.pauseVideo();
         this.isCameraOff = false;
         video.innerHTML = onCamera;
-        // videoImageContainer && (videoImageContainer.style.display = "block");
-        // imageCircle && (imageCircle.style.display = "flex");
+        this.handleVideoNotification("cameraOff");
+        videoImageContainer && (videoImageContainer.style.display = "block");
+        imageCircle && (imageCircle.style.display = "flex");
       } else {
         call?.resumeVideo();
         this.isCameraOff = true;
         video.innerHTML = offCamera;
-        // videoImageContainer && (videoImageContainer.style.display = "none");
-        // imageCircle && (imageCircle.style.display = "none");
+        this.handleVideoNotification("cameraOn");
+        videoImageContainer && (videoImageContainer.style.display = "none");
+        imageCircle && (imageCircle.style.display = "none");
       }
     };
     this.handleCloseVideo();

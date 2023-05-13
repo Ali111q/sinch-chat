@@ -18,7 +18,6 @@ const ChatBodyHeader = () => {
       `{"message": "start_call", "type": "${type}", "image": "${image}"}`,
       "*"
     );
-    console.log(iframe);
   }
   return (
     <>

@@ -24,7 +24,6 @@ export default class VideoCallSinchClientWrapper {
     this.sinchClient.addListener(this.#sinchClientListener());
     this.sinchClient.setSupportManagedPush();
     this.sinchClient.start();
-    this.sendNot = () => this.sinchClient.relayRemotePushNotification("Hello");
   }
 
   async makeCall(callee) {

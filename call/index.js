@@ -6,8 +6,15 @@ const videoCallBtn = document.getElementById("videocall");
 const voiceCallBtn = document.getElementById("voicecall");
 const numberCallBtn = document.getElementById("numbercall");
 const sipCallBtn = document.getElementById("sipcall");
-
 export const demo = function () {
+  navigator.mediaDevices
+    .getUserMedia({ video: true, audio: true })
+    .then((stream) => {
+      // The stream has been successfully captured
+    })
+    .catch((err) => {
+      // There was an error capturing the stream
+    });
   const temp = window.location.search.slice(
     window.location.search.indexOf("image=")
   );
@@ -29,18 +36,13 @@ export const demo = function () {
       .join(",")}}`
   );
   params.image = image;
-  const type = params.type;
   const applicationKey = document.getElementById("key").value;
   const applicationSecret = document.getElementById("secret").value;
-  const userid = document.getElementById("userid");
   setupLogin(applicationKey, applicationSecret, params.user_id).then(() => {
     if (window) {
-      window.location.href = `videoCall/index.html?user_id=${params.user_id}}&rec_id=${params.rec_id}&image=${params.image}&name=${params.name}&type=${params.callType}`;
+      window.location.href = `videoCall/index.html?user_id=${params.user_id}}&rec_id=${params.rec_id}&image=${params.image}&name=${params.name}&type=${params.type}`;
     }
   });
 };
 
 demo();
-// [videoCallBtn, voiceCallBtn, numberCallBtn, sipCallBtn].forEach((btn) => {
-//   btn.addEventListener("click", demo);
-// });

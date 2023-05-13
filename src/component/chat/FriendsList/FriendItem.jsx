@@ -60,24 +60,25 @@ const FriendItem = ({ data }) => {
     }
   };
   const handleDelete = (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     io.send({ command: "chat_delete", user_id: data.users[0].id, id: data.id });
-    
-    
-    dispatch(chatAction.selectChat({
-      chat_id: -1,
-      user:{
-        id: 0,
-        image: "",
-        name: "",
-      },
-      messages: [],
-    }))
-    dispatch(chatAction.deleteChat({id: data.id}))
+
+    dispatch(
+      chatAction.selectChat({
+        chat_id: -1,
+        user: {
+          id: 0,
+          image: "",
+          name: "",
+        },
+        messages: [],
+      })
+    );
+    dispatch(chatAction.deleteChat({ id: data.id }));
   };
   return (
     <div
-      className={`item ${chatData.chat_id === data.id && 'opened'}`}
+      className={`item ${chatData.chat_id === data.id && "opened"}`}
       onClick={handleClick}
       onContextMenu={handleRightClick}
     >

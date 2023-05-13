@@ -14,20 +14,32 @@ const editPost = `${url}/home/posts/edit`;
 const savePost = `${url}/home/posts/save`;
 const like = `${url}/home/posts/like`;
 const getPosts = `${url}/home/posts/`;
-const deletePost = ({ postId }) => {return `${url}/home/posts/delete?id=${postId}`;};
-const showPost = (postId) => {return `${url}/home/posts/show?id=${postId}`;};
+const deletePost = ({ postId }) => {
+  return `${url}/home/posts/delete?id=${postId}`;
+};
+const showPost = (postId) => {
+  return `${url}/home/posts/show?id=${postId}`;
+};
 const usersToShare = `${url}/home/get_users_to_share`;
 const sharePost = `${url}/home/posts/share`;
 const stopComents = `${url}/home/posts/stop_comments`;
 const addStory = `${url}/home/stories/store`;
-const deleteStory = ({ storyId }) => {return `${url}/home/stories/delete?id=${storyId}`;};
+const deleteStory = ({ storyId }) => {
+  return `${url}/home/stories/delete?id=${storyId}`;
+};
 const storySeen = `${url}/home/stories/view`;
 const addComent = `${url}/home/comments/store`;
-const getComment = ({ commentId }) => {return `${url}/home/comments?post_id=${commentId}`;};
-const deleteComment = ({ commentId }) => {return `${url}/home/comments/delete?id=${commentId}`;};
+const getComment = ({ commentId }) => {
+  return `${url}/home/comments?post_id=${commentId}`;
+};
+const deleteComment = ({ commentId }) => {
+  return `${url}/home/comments/delete?id=${commentId}`;
+};
 const getHistories = `${url}/home/search_histories`;
 const deleteAllHistory = `${url}/home/histories/delete_all`;
-const searchUsers = ({ searchName }) => {return `${url}/home/histories/users?name=${searchName}`;};
+const searchUsers = ({ searchName }) => {
+  return `${url}/home/histories/users?name=${searchName}`;
+};
 const home = `${url}/home`;
 const getUsersWithStories = `${url}/home/get_users`;
 const adsGetDays = `${url}/profile/ads/days`;
@@ -111,11 +123,11 @@ const pagesPosts = (postId) => {
 };
 const getChat = "http://192.168.0.128:3000/api/get-chats";
 const getMessages = "http://192.168.0.128:3000/api/get-messages";
-const uploadFile = `${url}/chat-upload`
-const uploadAudio = `${url}/chat-upload-mp3`
-const getAudio = `${url}/chat-mp3`
-const sinchKey = '41c700d1-67d1-4a6a-b17f-2c4d1e86b6a2'
-const sinchSecret = 'KPBO+ArT2EGzLzQjTaV77g=='
+const uploadFile = `${url}/chat-upload`;
+const uploadAudio = `${url}/chat-upload-mp3`;
+const getAudio = `${url}/chat-mp3`;
+const sinchKey = "41c700d1-67d1-4a6a-b17f-2c4d1e86b6a2";
+const sinchSecret = "KPBO+ArT2EGzLzQjTaV77g==";
 export {
   sinchKey,
   sinchSecret,

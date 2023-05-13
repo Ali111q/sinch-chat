@@ -11,6 +11,8 @@ import Story from "./story";
 import Highligths from "../../component/profile/highligths";
 import nopost from "../../assets/noPost.png";
 import ProfileMap from "./ProfileMap";
+import { chatAction } from "../../store/chat/chatSlice";
+import { useDispatch } from "react-redux";
 function UserProfile(props) {
   const navigate = useNavigate();
   const harfId = useParams();
@@ -26,7 +28,7 @@ function UserProfile(props) {
   const [isFriend, setIsFriend] = useState();
   const [isRequestFriend, setIsRequestFriend] = useState();
   const [showMap, setShowMap] = useState(false);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     path && navigate(path);
   }, [path]);
@@ -129,7 +131,6 @@ function UserProfile(props) {
       ).then((res) => setIsFriend(false));
     }
   }
-
 
   if (story) {
     return (
@@ -316,12 +317,20 @@ function UserProfile(props) {
                     )}
                     <li
                       onClick={(e) => {
-                        setpath(`/chat/${data.user.id}`);
+                        setpath(`/chat`);
+                        console.log(data.user.id);
                         sessionStorage.setItem(
                           "newCahtData",
                           JSON.stringify({
                             name: data.user.user_name,
                             id: data.user.id,
+                          })
+                        );
+                        dispatch(
+                          chatAction.selectChat({
+                            chat_id: null,
+                            user: data.user,
+                            messages: [],
                           })
                         );
                       }}
@@ -398,12 +407,20 @@ function UserProfile(props) {
                     {isFriend && (
                       <li
                         onClick={(e) => {
-                          setpath(`/chat/${data.user.id}`);
+                          setpath(`/chat`);
+                          console.log(data.user.id);
                           sessionStorage.setItem(
                             "newCahtData",
                             JSON.stringify({
                               name: data.user.user_name,
                               id: data.user.id,
+                            })
+                          );
+                          dispatch(
+                            chatAction.selectChat({
+                              chat_id: null,
+                              user: data.user,
+                              messages: [],
                             })
                           );
                         }}
@@ -489,13 +506,20 @@ function UserProfile(props) {
                     )}
                     <li
                       onClick={(e) => {
-                        setpath(`/chat/${data.user.id}`);
-
+                        setpath(`/chat`);
+                        console.log(data.user.id);
                         sessionStorage.setItem(
                           "newCahtData",
                           JSON.stringify({
                             name: data.user.user_name,
                             id: data.user.id,
+                          })
+                        );
+                        dispatch(
+                          chatAction.selectChat({
+                            chat_id: null,
+                            user: data.user,
+                            messages: [],
                           })
                         );
                       }}
@@ -598,12 +622,20 @@ function UserProfile(props) {
                     )}
                     <li
                       onClick={(e) => {
-                        setpath(`/chat/${data.user.id}`);
+                        setpath(`/chat`);
+                        console.log(data.user.id);
                         sessionStorage.setItem(
                           "newCahtData",
                           JSON.stringify({
                             name: data.user.user_name,
                             id: data.user.id,
+                          })
+                        );
+                        dispatch(
+                          chatAction.selectChat({
+                            chat_id: null,
+                            user: data.user,
+                            messages: [],
                           })
                         );
                       }}

@@ -27,7 +27,8 @@ const ChatBodyForm = () => {
     type: null,
     errorMsg: null,
   });
-  const [caption, setCaption] = useState('')
+  console.log(chatData);
+  const [caption, setCaption] = useState("");
   const [file, setFile] = useState(null);
   useEffect(() => {
     if (audioBlob) {
@@ -112,6 +113,12 @@ const ChatBodyForm = () => {
     e.preventDefault();
     if (inputVal != "") {
       dispatch(chatAction.setVal(""));
+      console.log({
+        command: "message",
+        userId: chatData.user.id,
+        body: inputVal,
+        type: 1,
+      });
       if (replayMessage.id) {
         io.send({
           command: "reply",
@@ -163,7 +170,7 @@ const ChatBodyForm = () => {
       });
       setShowUploadDetails(true);
     }
-    setFile(file)
+    setFile(file);
   }
   function handleSubmit(e) {
     e.preventDefault();
@@ -224,26 +231,25 @@ const ChatBodyForm = () => {
       });
     }
   }
-  const options = useMemo(() => ({
-    source:{
-      type: "video",
-      sources: [{ src: element.body, type: element.type }],
-    },
-    options:{
-      controls: [
-        "play-large",
-        "play",
-        "enabled",
-        "fullscreen",
-        "progress",
-      ],
-    }
-  }), [element.body])
+  const options = useMemo(
+    () => ({
+      source: {
+        type: "video",
+        sources: [{ src: element.body, type: element.type }],
+      },
+      options: {
+        controls: ["play-large", "play", "enabled", "fullscreen", "progress"],
+      },
+    }),
+    [element.body]
+  );
 
   return (
     <>
       <div
-        className={`chat-body-from ${replayMessage.id !== null && "there-is-replay"}`}
+        className={`chat-body-from ${
+          replayMessage.id !== null && "there-is-replay"
+        }`}
       >
         {typing.typing && (
           <div className="typing">
@@ -336,11 +342,13 @@ const ChatBodyForm = () => {
                 </h5>
               ) : (
                 <div className="video-upload-checker">
-                  <Plyr
-                    {...options}
-                  />
+                  <Plyr {...options} />
                   <form onSubmit={handleSubmit} className="form__upload">
-                    <input type="text" placeholder="Caption..." onChange={e => setCaption(e.target.value)} />
+                    <input
+                      type="text"
+                      placeholder="Caption..."
+                      onChange={(e) => setCaption(e.target.value)}
+                    />
                     <button type="submit" className="upload-video-button">
                       ارسال
                     </button>
@@ -353,7 +361,11 @@ const ChatBodyForm = () => {
                   <img src={element.body} alt="" />
                 </div>
                 <form className="form__upload" onSubmit={handleSubmit}>
-                  <input type="text" placeholder="Caption..." onChange={e => setCaption(e.target.value)} />
+                  <input
+                    type="text"
+                    placeholder="Caption..."
+                    onChange={(e) => setCaption(e.target.value)}
+                  />
                   <button type="submit" className="upload-video-button">
                     ارسال
                   </button>

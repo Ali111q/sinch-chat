@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "live-server --port=55687 --host=192.168.190 --watch=./common/* --watch=./videocall/* --watch=./videocall/index.html --no-css-inject",
+    "start": "live-server --port=55687 --host=192.168.0.190 --watch=./common/* --watch=./videocall/* --watch=./videocall/index.html --no-css-inject",
     "dev": "webpack serve"
   },
   "keywords": [],

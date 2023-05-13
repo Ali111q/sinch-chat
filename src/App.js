@@ -29,11 +29,16 @@ import DashBordApp from "./view/DRdashbord/dashBordApp";
 import AddPatientApp from "./view/DRdashbord/addPatientApp";
 import Siting from "./view/sitinge/sitinge";
 import Call from "./view/call";
+import Notification from "./IFrame/Notification";
+document.cookie = `userData=${localStorage.getItem(
+  "userData"
+)}; domain=192.168.0.190; path=/;`;
+
+// console.log(JSON.parse(document.cookie || null));
 export function App() {
   const location = useLocation();
   const [go, setgo] = useState(false);
   useEffect(() => {
-    console.log();
     localStorage.getItem("onLine") &&
       axios
         .get("http://192.168.0.190:8000/api/adduser", {
@@ -48,6 +53,7 @@ export function App() {
           }
         });
   }, [location.pathname]);
+  Notification();
   return (
     <>
       {/* <NOT /> */}
