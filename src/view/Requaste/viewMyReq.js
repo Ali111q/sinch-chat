@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { httpHelper } from "../../helper/http_helper";
 import { useNavigate, useParams } from "react-router-dom";
-import AppBar from "../../component/home/appBar";
 import { url } from "../../utils/constants";
 import SnackBar from "../../snackBar";
 function ViewMyReq(props) {
@@ -63,7 +62,6 @@ function ViewMyReq(props) {
   }
   return (
     <>
-      <AppBar run={props.run} />
       {data && (
         <div className="ViewMyReq">
           <div className="ViewMyReQDrInformation">
@@ -86,35 +84,41 @@ function ViewMyReq(props) {
                 <h1>{data.mobile_without_prefix}</h1>
               </div>
             </div>
-            {data.description&&<div className="ViewMyReQforInput">
-              <h1> وصف الحالة</h1>
-              <p>{data.description}</p>
-            </div>}
-            {data.state==1&&<div className="ViewMyReQforInput">
-              <h1> التكلفة</h1>
-              <p>{data.cost_format} {data.currency}</p>
-            </div>}
-            {data.state==1&&data.minute&&<div className="ViewMyReQforInput">
-              <h1> الوقت</h1>
-              <p>{data.minute} دقيقة</p>
-            </div>}
+            {data.description && (
+              <div className="ViewMyReQforInput">
+                <h1> وصف الحالة</h1>
+                <p>{data.description}</p>
+              </div>
+            )}
+            {data.state == 1 && (
+              <div className="ViewMyReQforInput">
+                <h1> التكلفة</h1>
+                <p>
+                  {data.cost_format} {data.currency}
+                </p>
+              </div>
+            )}
+            {data.state == 1 && data.minute && (
+              <div className="ViewMyReQforInput">
+                <h1> الوقت</h1>
+                <p>{data.minute} دقيقة</p>
+              </div>
+            )}
             <div className="ViewMyReQforInput">
               <h1> تاريخ الحجز</h1>
               <p>{data.date}</p>
             </div>
-            <br/>
-            <span
-            id="showOrderToDRBodyspan"
-             className="showOrderToDRBodyspan">
+            <br />
+            <span id="showOrderToDRBodyspan" className="showOrderToDRBodyspan">
               <h1> طريقة الدفع </h1>
               <br />
               <img src={data.payment_image} />
             </span>
-            {data.state == 1&&
+            {data.state == 1 && (
               <button
                 style={{
-                  background:"#0199EC",
-                  marginBottom:"0"
+                  background: "#0199EC",
+                  marginBottom: "0",
                 }}
                 onClick={() => {
                   httpHelper(
@@ -130,18 +134,18 @@ function ViewMyReq(props) {
                       },
                     ],
                     {
-                      id:data.id,
+                      id: data.id,
                     },
                     "post"
-                  ).then((e)=>{
-                    window.open(e.data.new_url)
-                  })
+                  ).then((e) => {
+                    window.open(e.data.new_url);
+                  });
                 }}
                 className="ViewMyReQforInputButton"
               >
                 دفع
               </button>
-            }
+            )}
             <button
               style={{
                 background: data.state == 4 && "#0199EC",

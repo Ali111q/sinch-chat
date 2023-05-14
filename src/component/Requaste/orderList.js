@@ -4,7 +4,6 @@ import god from "../../assets/imgs/god.jpg";
 import { useNavigate, useParams } from "react-router-dom";
 import img from "../../assets/imgs/don.svg";
 import { orders, url } from "../../utils/constants";
-import AppBar from "../home/appBar";
 import ViewReq from "./showOrder";
 import SnackBar from "../../snackBar";
 function OrderList(props) {
@@ -40,8 +39,8 @@ function OrderList(props) {
       {},
       "get"
     ).then((e) => {
-      setprices(e.data)
-      setshowACdataprices(e.data[0].product_id)
+      setprices(e.data);
+      setshowACdataprices(e.data[0].product_id);
     });
   }, []);
   useEffect(() => {
@@ -62,7 +61,6 @@ function OrderList(props) {
   }, [selcted, orderType.type]);
   return (
     <>
-      <AppBar run={props.run} />
       <SnackBar
         run={SnackBarGo}
         off={setSnackBarGo}
@@ -252,38 +250,46 @@ function OrderList(props) {
             <div>
               <h1>ما سبب رفضك للاستشارة ؟</h1>
             </div>
-            <textarea onChange={e=>{
-              setreason(e.target.value)
-            }} name="" id="" cols="30" rows="10"></textarea>
+            <textarea
+              onChange={(e) => {
+                setreason(e.target.value);
+              }}
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+            ></textarea>
           </div>
-          <button class="alert-din-rq"
-
-          onClick={()=>{
-            httpHelper(
-              `${url}/orders/reject`,
-              [
+          <button
+            class="alert-din-rq"
+            onClick={() => {
+              httpHelper(
+                `${url}/orders/reject`,
+                [
+                  {
+                    key: "Content-Type",
+                    value: "application/json",
+                  },
+                  {
+                    key: "Authorization",
+                    value: `Bearer ${localStorage.getItem("token")}`,
+                  },
+                ],
                 {
-                  key: "Content-Type",
-                  value: "application/json",
+                  id: orderData.id,
+                  reason: reason,
                 },
-                {
-                  key: "Authorization",
-                  value: `Bearer ${localStorage.getItem("token")}`,
-                },
-              ],
-              {
-                id:orderData.id,
-                reason:reason
-              },
-              "post"
-            ).then((e) => {
-              setSnackBarType(e.status);
-              setSnackBarGo(true);
-              setSnackBarMs(e.message);
-              setshowRj(false);
-            });
-          }}
-          >رفض</button>
+                "post"
+              ).then((e) => {
+                setSnackBarType(e.status);
+                setSnackBarGo(true);
+                setSnackBarMs(e.message);
+                setshowRj(false);
+              });
+            }}
+          >
+            رفض
+          </button>
         </div>
       )}
       {(showRj || showAC) && (
@@ -310,78 +316,89 @@ function OrderList(props) {
                 <p>د.ع</p>
               </div>
               <div class="color-back11">
-              <div class="color-back11">
-              {orderData.type==2?
-              <select onChange={(e)=>{
-                setshowACdataprices(e.target.value)
-              }}>
-                {prices&&
-                prices.map(e=>{
-                  return <option value={e.product_id}>{e.price}</option> 
-                })
-                }
-                </select>:<p>{orderData.cost_format}</p>
-                }
-              </div>
+                <div class="color-back11">
+                  {orderData.type == 2 ? (
+                    <select
+                      onChange={(e) => {
+                        setshowACdataprices(e.target.value);
+                      }}
+                    >
+                      {prices &&
+                        prices.map((e) => {
+                          return (
+                            <option value={e.product_id}>{e.price}</option>
+                          );
+                        })}
+                    </select>
+                  ) : (
+                    <p>{orderData.cost_format}</p>
+                  )}
+                </div>
               </div>
               <div class="color-back111">
                 <p>التكلفة</p>
               </div>
             </span>
-            {orderData.type==2&&<span>
-              <div class="color-back1">
-                <p>دقيقة</p>
-              </div>
-              <div class="color-back11">
-                <input type={"number"} placeholder={0}
-                onChange={e=>{
-                  setshowACdatatime(e.target.value)
-                }}
-                />
-              </div>
-              <div class="color-back111">
-                <p>الوقت</p>
-              </div>
-            </span>}
+            {orderData.type == 2 && (
+              <span>
+                <div class="color-back1">
+                  <p>دقيقة</p>
+                </div>
+                <div class="color-back11">
+                  <input
+                    type={"number"}
+                    placeholder={0}
+                    onChange={(e) => {
+                      setshowACdatatime(e.target.value);
+                    }}
+                  />
+                </div>
+                <div class="color-back111">
+                  <p>الوقت</p>
+                </div>
+              </span>
+            )}
           </div>
-          <button 
-          onClick={e=>{
-            var postData = {}
-            if (orderData.type==2) {
-              postData ={
-                id:orderData.id,
-                minute:showACdatatime,
-                product_id:showACdataprices
+          <button
+            onClick={(e) => {
+              var postData = {};
+              if (orderData.type == 2) {
+                postData = {
+                  id: orderData.id,
+                  minute: showACdatatime,
+                  product_id: showACdataprices,
+                };
+              } else {
+                postData = {
+                  id: orderData.id,
+                  product_id: orderData.product_id,
+                };
               }
-            } else {
-              postData ={
-                id:orderData.id,
-                product_id:orderData.product_id
-              }
-            }
-            httpHelper(
-              `${url}/orders/accept`,
-              [
-                {
-                  key: "Content-Type",
-                  value: "application/json",
-                },
-                {
-                  key: "Authorization",
-                  value: `Bearer ${localStorage.getItem("token")}`,
-                },
-              ],
-              postData,
-              "post"
-            ).then((e) => {
-              setSnackBarType(e.status);
-              setSnackBarGo(true);
-              setSnackBarMs(e.message);
-              setshowRj(false);
-            });
-          }}
-           class="alert-acs-rq">{orderData.type==1?"قبول":" بدء الاستشارة"}</button>
-         
+              httpHelper(
+                `${url}/orders/accept`,
+                [
+                  {
+                    key: "Content-Type",
+                    value: "application/json",
+                  },
+                  {
+                    key: "Authorization",
+                    value: `Bearer ${localStorage.getItem("token")}`,
+                  },
+                ],
+                postData,
+                "post"
+              ).then((e) => {
+                setSnackBarType(e.status);
+                setSnackBarGo(true);
+                setSnackBarMs(e.message);
+                setshowRj(false);
+              });
+            }}
+            class="alert-acs-rq"
+          >
+            {orderData.type == 1 ? "قبول" : " بدء الاستشارة"}
+          </button>
         </div>
       )}
     </>

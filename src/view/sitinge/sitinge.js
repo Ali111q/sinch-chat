@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import SitingList from "../../component/sitinge/sitingList";
-import AppBar from "../../component/home/appBar";
 import SitingCont from "../../component/sitinge/all";
 import "../../new.css";
 import SnackBar from "../../snackBar";
@@ -15,28 +14,28 @@ function Siting(props) {
   const [ScrAlerrType, setScrAlerrType] = useState();
   const [userdata, setuserdata] = useState(false);
   const [mov, setmov] = useState(true);
-  const data = JSON.parse(localStorage.getItem('userData'))
+  const data = JSON.parse(localStorage.getItem("userData"));
   const [type, settype] = useState(1);
   return (
     <>
-    {ScrAlerr&&(
-      ScrAlerrType == 1?
-    <Remov
-    setScrAlerr={setScrAlerr}
-    userdata={userdata}
-    SnackBarGo={setSnackBarGo}
-    SnackBarType={setSnackBarType}
-    SnackBarMs={setSnackBarMs}
-     />
-     :
-     <Haired
-     setScrAlerr={setScrAlerr}
-     userdata={userdata}
-     SnackBarGo={setSnackBarGo}
-     SnackBarType={setSnackBarType}
-     SnackBarMs={setSnackBarMs}
-      />
-     )}
+      {ScrAlerr &&
+        (ScrAlerrType == 1 ? (
+          <Remov
+            setScrAlerr={setScrAlerr}
+            userdata={userdata}
+            SnackBarGo={setSnackBarGo}
+            SnackBarType={setSnackBarType}
+            SnackBarMs={setSnackBarMs}
+          />
+        ) : (
+          <Haired
+            setScrAlerr={setScrAlerr}
+            userdata={userdata}
+            SnackBarGo={setSnackBarGo}
+            SnackBarType={setSnackBarType}
+            SnackBarMs={setSnackBarMs}
+          />
+        ))}
       <SnackBar
         run={SnackBarGo}
         off={setSnackBarGo}

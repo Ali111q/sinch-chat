@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   data: {
@@ -30,12 +30,25 @@ const chatSlice = createSlice({
       state.data.chats = action.payload.chats;
       console.log(state.data.chats);
     },
+    upDateChatsList: (state, action) => {
+      const newChat = action.payload;
+      const selectedChat = state.data.chats.find((e) => e.id === newChat.id);
+      const oldChats = state.data.chats.filter((e) => e.id !== newChat.id);
+      if (selectedChat) {
+        selectedChat.last_message.body = newChat.last_message.body;
+        selectedChat.last_message.time = newChat.last_message.en_time;
+        selectedChat.unseenCount = newChat.unseen_count;
+        state.data.chats = [selectedChat, ...oldChats];
+      } else {
+        state.data.chats = [newChat, ...oldChats];
+      }
+    },
     addChats(state, action) {
       state.data.chats = [...state.data.chats, action.payload];
     },
     selectChat(state, action) {
       const data = action.payload;
-      console.log(action.payload)
+      console.log(action.payload);
       state.data.chatData = {
         chat_id: data.chat_id,
         user: data.user,
@@ -74,28 +87,33 @@ const chatSlice = createSlice({
       };
     },
     removeMS(state, action) {
-      const data = action.payload;
-      var myList = [];
-      var messages = [];
-      state.data.chats.map((e) => {
-        if (e.chat_id == data.chat_id) {
-          messages = e.messages.filter((e) => e.id != data.id);
-          myList.push({
-            ...e,
-            messages: e.messages.filter((e) => e.id != data.id),
-          });
-        } else {
-          myList.push(e);
-        }
-      });
-      state.data = {
-        ...state.data,
-        chats: myList,
-        chatData: {
-          ...state.data.chatData,
-          messages: messages,
-        },
-      };
+      const message = action.payload;
+      const oldMessages = state.data.chatData.messages.filter(
+        (e) => e.id !== message.id
+      );
+      state.data.chatData.messages = oldMessages;
+      // const data = action.payload;
+      // var myList = [];
+      // var messages = [];
+      // state.data.chats.map((e) => {
+      //   if (e.chat_id == data.chat_id) {
+      //     messages = e.messages.filter((e) => e.id != data.id);
+      //     myList.push({
+      //       ...e,
+      //       messages: e.messages.filter((e) => e.id != data.id),
+      //     });
+      //   } else {
+      //     myList.push(e);
+      //   }
+      // });
+      // state.data = {
+      //   ...state.data,
+      //   chats: myList,
+      //   chatData: {
+      //     ...state.data.chatData,
+      //     messages: messages,
+      //   },
+      // };
     },
     pag(state, action) {
       const { data, id } = action.payload;
@@ -138,9 +156,9 @@ const chatSlice = createSlice({
       state.chatRightMenu.userID = userID;
     },
     deleteChat: (state, action) => {
-      const {id} = action.payload
+      const { id } = action.payload;
       state.data.chats = state.data.chats.filter((e) => e.id !== id);
-    }
+    },
   },
 });
 

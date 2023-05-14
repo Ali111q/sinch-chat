@@ -1,0 +1,63 @@
+
+.Card-patients-1{
+    cursor: pointer;
+    float: right;
+    position: relative;
+    width:22%;
+    height: fit-content;
+    padding:0.75%;
+    margin:0.75%;
+    padding-top:3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Card-patients-1-info{
+    position: relative;
+    top: 0;
+    width: 98%;
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 2vw;
+    padding:0 2%;
+    padding-top: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 1vw;
+    overflow: hidden;
+    border: #0199EC 0.1vw dashed;
+    transition: 1s;
+}
+.Card-patients-1-info:hover{
+    top: 1vw;
+    box-shadow: rgba(50, 50, 93, 0) 0px 6px 12px -2px, rgba(0, 0, 0, 0) 0px 3px 7px -3px;
+
+}
+
+#imgHover:hover{
+    width: 12vw;
+    top: 6vw;
+}
+.card-mo-con{
+    position: relative;
+    width: 90vw;
+    padding: 2vw;
+    height: 25vw;
+    display: flex;
+    align-items: center;
+}
+.card-mo-body{
+    background-color: white;
+    position: absolute;
+    right: 1vw;
+    width: 70vw;
+    height: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 2vw;
+    padding: 4vw;
+    box-shadow: rgba(50, 50, 93, 0.2) 0px 6px 12px -2px, rgba(0, 0, 0, 0.1) 0px 3px 7px -3px;
+}

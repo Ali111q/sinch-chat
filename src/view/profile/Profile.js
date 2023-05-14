@@ -1,6 +1,5 @@
 import React from "react";
 import "../../new.css";
-import AppBar from "../../component/home/appBar";
 import { useState, useEffect } from "react";
 import { httpHelper } from "../../helper/http_helper";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -236,7 +235,6 @@ function Profile(props) {
           onClick={() => setAddhighlight(false)}
           className={Addhighlight ? "alert" : ""}
         ></div>
-        <AppBar offf={off} run={props.run} st={setseting} start={0} />
         {data && (
           <div className="profileContainer">
             <div className="profileContainerInfo">

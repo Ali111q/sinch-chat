@@ -1,0 +1,251 @@
+.t1{
+    font-size: 5vw;
+    font-family: "Tajawal",sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+}
+.t2{
+    font-size: 4.5vw;
+    font-family: "Tajawal",sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+}
+.t3{
+    font-size: 4vw;
+    font-family: "Tajawal",sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+}
+.t4{
+    font-size: 3.5vw;
+    font-family: "Tajawal",sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+}
+.t5{
+    font-size: 3vw;
+    font-family: "Tajawal",sans-serif;
+    font-weight: 300;
+    background-color: transparent;
+}
+.t6{
+    font-size: 2.5vw;
+    font-family: "Tajawal",sans-serif;
+    font-weight: 200;
+    background-color: transparent;
+}
+.t7{
+    font-size: 2vw;
+    font-family: "Tajawal",sans-serif;
+    font-weight: 100;
+    background-color: transparent;
+}
+.Select-con-man{
+    position: relative;
+    width: 30vw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 1vw;
+    border: 0.3vw solid #0199EC;
+    padding:1vw;
+    margin-left: 1vw;
+}
+.Custom-select{
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+.Custom-select-lin-con{
+    position: relative;
+    width: 5vw;
+    height: 5vw;
+    display: flex;
+    align-items: center;
+}
+#Custom-select-lin-left{
+    position: absolute;
+    left: 3vw;
+    display: block;
+    width: 0.5vw;
+    height: 2.5vw;
+    border-radius: 0.2vw;
+    background-color: #0199EC;
+    transition: 1s;
+}
+#Custom-select-lin-right{
+    right: 3vw;
+    position: absolute;
+    display: block;
+    width: 0.5vw;
+    height: 2.5vw;
+    border-radius: 0.2vw;
+    background-color: #0199EC;
+    transition: 1s;
+}
+.Custom-select-list-con{
+    z-index: 5;
+    cursor: pointer;
+    position: absolute;
+    top: 105%;
+    width: 100%;
+    height: fit-content;
+    background-color: white;
+    border: 0.1vw solid #0199EC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1vw;
+}
+.Custom-select-list-item{
+    position: relative;
+    width: 90%;
+    display: flex;
+    padding: 0.2vw;
+    align-items: center;
+}
+.selectted{
+    position: absolute;
+    right: 0.1vw;
+    width: 4vw;
+    height: 4vw;
+    background-color: #F7227F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.selectted svg{
+    width: 80%;
+}
+
+@media (orientation: landscape){
+    .Select-con-man{
+        position: relative;
+        width: 10vw;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        border-radius: 0.3vw;
+        border: 0.1vw solid #0199EC;
+        padding:0.3vw;
+        margin-left: 1vw;
+    }
+    .Custom-select{
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+    }
+    .Custom-select-lin-con{
+        position: relative;
+        width: 2vw;
+        height: 2vw;
+        display: flex;
+        align-items: center;
+    }
+    #Custom-select-lin-left{
+        position: absolute;
+        left: 1.1vw;
+        display: block;
+        width: 0.3vw;
+        height: 1vw;
+        border-radius: 0.2vw;
+        background-color: #0199EC;
+        transition: 1s;
+    }
+    #Custom-select-lin-right{
+        right: 1.1vw;
+        position: absolute;
+        display: block;
+        width: 0.3vw;
+        height: 1vw;
+        border-radius: 0.2vw;
+        background-color: #0199EC;
+        transition: 1s;
+    }
+    .Custom-select-list-con{
+        z-index: 5;
+        cursor: pointer;
+        position: absolute;
+        top: 105%;
+        width: 100%;
+        height: fit-content;
+        background-color: white;
+        border: 0.1vw solid #0199EC;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 1vw;
+    }
+    .Custom-select-list-item{
+        position: relative;
+        width: 90%;
+        display: flex;
+        padding: 0.2vw;
+        align-items: center;
+    }
+    .selectted{
+        position: absolute;
+        right: 0.1vw;
+        width: 1.5vw;
+        height: 1.5vw;
+        background-color: #F7227F;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+    .selectted svg{
+        width: 80%;
+    }
+    .t1{
+        font-size: 2.5vw;
+        font-family: "Tajawal",sans-serif;
+        font-weight: 400;
+        background-color: transparent;
+    }
+    .t2{
+        font-size: 2.2vw;
+        font-family: "Tajawal",sans-serif;
+        font-weight: 400;
+        background-color: transparent;
+    }
+    .t3{
+        font-size: 2vw;
+        font-family: "Tajawal",sans-serif;
+        font-weight: 400;
+        background-color: transparent;
+    }
+    .t4{
+        font-size: 1.8vw;
+        font-family: "Tajawal",sans-serif;
+        font-weight: 400;
+        background-color: transparent;
+    }
+    .t5{
+        font-size: 1.5vw;
+        font-family: "Tajawal",sans-serif;
+        font-weight: 300;
+        background-color: transparent;
+    }
+    .t6{
+        font-size: 1.3vw;
+        font-family: "Tajawal",sans-serif;
+        font-weight: 200;
+        background-color: transparent;
+    }
+    .t7{
+        font-size: 1vw;
+        font-family: "Tajawal",sans-serif;
+        font-weight: 100;
+        background-color: transparent;
+    }
+}

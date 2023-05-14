@@ -30,6 +30,8 @@ import AddPatientApp from "./view/DRdashbord/addPatientApp";
 import Siting from "./view/sitinge/sitinge";
 import Call from "./view/call";
 import Notification from "./IFrame/Notification";
+import Sheets from "./view/mySheet/sheets";
+import AppBar from "./component/home/appBar";
 document.cookie = `userData=${localStorage.getItem(
   "userData"
 )}; domain=192.168.0.190; path=/;`;
@@ -58,30 +60,32 @@ export function App() {
     <>
       {/* <NOT /> */}
       {/* <Intro run={setgo} go={go} /> */}
+      <AppBar run={setgo} />
       <Routes>
-        <Route path="/login" element={<Login run={setgo} />} />
-        <Route path="/Drugs" element={<Drugs run={setgo} />} />
-        <Route path="/emergincy" element={<Emergincy run={setgo} />} />
-        <Route path="/post/:id" element={<PostView run={setgo} />} />
-        <Route path="/register" element={<Register run={setgo} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Drugs" element={<Drugs />} />
+        <Route path="/emergincy" element={<Emergincy />} />
+        <Route path="/post/:id" element={<PostView />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/ResponsiveDialog" element={<ResponsiveDialog />} />
         <Route path="/registerUser/:id/:nam" element={<RegisterUser />} />
-        <Route path="/otp" element={<Otp run={setgo} />} />
-        <Route path="/story/:id" element={<StoryView run={setgo} />} />
-        <Route path="/storyScreen/:id" element={<StoryScreen run={setgo} />} />
-        <Route path="/UserProfile/:id" element={<UserProfile run={setgo} />} />
-        <Route path="/addPost" element={<AddPost run={setgo} />} />
-        <Route path="/AddPatientApp" element={<AddPatientApp run={setgo} />} />
-        <Route path="/Addstory" element={<Addstory run={setgo} />} />
-        <Route path="/profile" element={<Profile run={setgo} />} />
-        <Route path="/DashBordApp/:nav" element={<DashBordApp run={setgo} />} />
-        <Route path="/Requaste/:id" element={<Requaste run={setgo} />} />
-        <Route path="/ViewMyReq/:id" element={<ViewMyReq run={setgo} />} />
-        <Route path="/chat" element={<ChatScreen run={setgo} />} />
-        <Route path="/orderList/:type" element={<OrderList run={setgo} />} />
-        <Route path="/settings" element={<Siting run={setgo} />} />
-        <Route path="/call" element={<Call run={setgo} />} />
-        <Route path="/*" element={<Home run={setgo} />} />
+        <Route path="/otp" element={<Otp />} />
+        <Route path="/story/:id" element={<StoryView />} />
+        <Route path="/storyScreen/:id" element={<StoryScreen />} />
+        <Route path="/UserProfile/:id" element={<UserProfile />} />
+        <Route path="/addPost" element={<AddPost />} />
+        <Route path="/AddPatientApp" element={<AddPatientApp />} />
+        <Route path="/Addstory" element={<Addstory />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/DashBordApp/:nav" element={<DashBordApp />} />
+        <Route path="/Requaste/:id" element={<Requaste />} />
+        <Route path="/ViewMyReq/:id" element={<ViewMyReq />} />
+        <Route path="/chat" element={<ChatScreen />} />
+        <Route path="/orderList/:type" element={<OrderList />} />
+        <Route path="/sheet" element={<Sheets />} />
+        <Route path="/settings" element={<Siting />} />
+        <Route path="/call" element={<Call />} />
+        <Route path="/*" element={<Home />} />
       </Routes>
     </>
   );

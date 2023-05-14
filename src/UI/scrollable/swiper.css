@@ -1,0 +1,22 @@
+.swiper{
+    height: fit-content;
+}
+.SwiperUi-con{
+    width: 100%;
+    height: fit-content;
+}
+.swiper-wrapper{
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+  }
+.swiper-slide{
+    cursor: pointer;
+    width: 100%;
+    height: fit-content;
+}
+.swiper-slide{
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+}

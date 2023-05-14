@@ -2,7 +2,6 @@ import SnackBar from "../../snackBar";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Back from "../../component/else/back";
-import AppBar from "../../component/home/appBar";
 import { httpHelper } from "../../helper/http_helper";
 import { url } from "../../utils/constants";
 function Drugs(props) {
@@ -141,7 +140,7 @@ function Drugs(props) {
           </>
         ) : (
           <>
-          <h1>حذف الدواء</h1>
+            <h1>حذف الدواء</h1>
             <span>
               <h1>{edetedata.name}</h1>
               <p>{edetedata.by}</p>
@@ -187,7 +186,6 @@ function Drugs(props) {
         type={SnackBarType}
       />
       <div id="mediaQueryForPc">
-        <AppBar run={props.run} />
         <div className="DrugsMainContainer">
           <div className="DrugsMainContainerScroll">
             <div className="DrugsMainContainerContent">

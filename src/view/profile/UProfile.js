@@ -1,7 +1,6 @@
 import React from "react";
 import "../../new.css";
 import "./profile.css";
-import AppBar from "../../component/home/appBar";
 import { useState, useEffect } from "react";
 import { httpHelper } from "../../helper/http_helper";
 import { useNavigate, useParams } from "react-router-dom";
@@ -225,7 +224,6 @@ function UserProfile(props) {
               })}
           </ul>
         </div>
-        <AppBar offf={setoff} run={props.run} start={0} />
         {data && (
           <div className="profileContainer">
             <div className="profileContainerInfo">

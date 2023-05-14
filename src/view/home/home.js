@@ -1,4 +1,3 @@
-import AppBar from "../../component/home/appBar";
 import SwiperStory from "../../component/home/storyList";
 import Posts from "../../component/home/posts";
 import { httpHelper } from "../../helper/http_helper";
@@ -43,10 +42,10 @@ function Home(props) {
       var avr = height / num;
       var per = num - 3;
       var last = avr * per;
-      if(a.scrollTop > last){
+      if (a.scrollTop > last) {
         setcheckHeigth(false);
         console.log(pages.next_page_url);
-        if (pages.next_page_url != null){
+        if (pages.next_page_url != null) {
           httpHelper(
             pages.next_page_url,
             [
@@ -66,7 +65,7 @@ function Home(props) {
             setPostsData(mYlist);
           });
         } else {
-          setisLoding(false)
+          setisLoding(false);
         }
       }
     }
@@ -78,7 +77,6 @@ function Home(props) {
         onScroll={anyScroll}
         style={{ width: "100%", height: "100vh", overflowY: "scroll" }}
       >
-        <AppBar run={props.run} />
         <SwiperStory run={props.run} data={story} />
         <div id="offsetHeight">
           {PostsData && (
@@ -89,9 +87,11 @@ function Home(props) {
             />
           )}
         </div>
-        {isLoding&&<div className="lodingHome">
-          <img src={Loadind} />
-        </div>}
+        {isLoding && (
+          <div className="lodingHome">
+            <img src={Loadind} />
+          </div>
+        )}
       </div>
     </>
   );

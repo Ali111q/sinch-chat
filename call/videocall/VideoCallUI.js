@@ -297,10 +297,7 @@ export default class VideoCallUI {
     circleImage.setAttribute("id", `circle__image-container`);
     imgCircle.setAttribute("class", "circle__image-img");
     imgCircle.setAttribute("id", `circle__image-img`);
-    console.log("wijfweoifjewoifjweoi");
-    console.log(my_image, image);
     const userData = JSON.parse(document.cookie.split("userData=")[1]);
-    console.log(userData);
     if (direction === "incoming") {
       videoImage.src = image;
       imgCircle.src = image;
@@ -355,7 +352,6 @@ export default class VideoCallUI {
     this.handleScreen = () => {
       const outgoing = document.getElementById("outgoing-video");
       const incoming = document.getElementById("incoming-video");
-      console.log(outgoingStream);
       incoming.className = "outgoing-video";
       incoming.id = "outgoing-video";
       outgoing.className = "incoming-video";

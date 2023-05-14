@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import AppBar from "../../component/home/appBar";
 import axios from "axios";
 import Back from "../../component/else/back";
 import gg from "../../assets/imgs/god.jpg";
@@ -65,7 +64,6 @@ function Addstory(props) {
         type={SnackBarType}
       />
       <div id="mediaQueryForPc">
-        <AppBar run={props.run} />
         <div className="addNewPost">
           <div className="AddPostScreen_container">
             <div className="AddPostScreen_containerScroll">

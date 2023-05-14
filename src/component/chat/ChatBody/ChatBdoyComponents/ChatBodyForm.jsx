@@ -27,7 +27,6 @@ const ChatBodyForm = () => {
     type: null,
     errorMsg: null,
   });
-  console.log(chatData);
   const [caption, setCaption] = useState("");
   const [file, setFile] = useState(null);
   useEffect(() => {

@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "Tajawal", sans-serif;
+  src: url("../../../public/Tajawal/Tajawal-Bold.ttf");
+}
+.text1 {
+  height: fit-content;
+  font-size: 5vw;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 400;
+  background-color: transparent;
+}
+.text2 {
+  height: fit-content;
+  font-size: 4.5vw;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 400;
+  background-color: transparent;
+}
+.text3 {
+  height: fit-content;
+  font-size: 4vw;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 400;
+  background-color: transparent;
+}
+.text4 {
+  height: fit-content;
+  font-size: 3.5vw;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 400;
+  background-color: transparent;
+}
+.text5 {
+  height: fit-content;
+  font-size: 3vw;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 300;
+  background-color: transparent;
+}
+.text6 {
+  height: fit-content;
+  font-size: 2.5vw;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 200;
+  background-color: transparent;
+}
+.text7 {
+  height: fit-content;
+  font-size: 2vw;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 100;
+  background-color: transparent;
+}
+
+@media (orientation: landscape) {
+  .text1 {
+    height: fit-content;
+    font-size: 2.5vw;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+  }
+  .text2 {
+    height: fit-content;
+    font-size: 2.2vw;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+  }
+  .text3 {
+    height: fit-content;
+    font-size: 2vw;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+  }
+  .text4 {
+    height: fit-content;
+    font-size: 1.8vw;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+  }
+  .text5 {
+    height: fit-content;
+    font-size: 1.5vw;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 300;
+    background-color: transparent;
+  }
+  .text6 {
+    height: fit-content;
+    font-size: 1.3vw;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 200;
+    background-color: transparent;
+  }
+  .text7 {
+    height: fit-content;
+    font-size: 1vw;
+    font-family: "Tajawal", sans-serif;
+    font-weight: 100;
+    background-color: transparent;
+  }
+}

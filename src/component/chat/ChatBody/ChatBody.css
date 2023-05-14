@@ -108,7 +108,7 @@
   z-index: 2444;
 }
 .chat-body-messages .message.img .message__menu,
-.chat-body-messages .message.video .message__menu{
+.chat-body-messages .message.video .message__menu {
   bottom: 60%;
 }
 .chat-body-messages .voice-message-container.start .message__menu,
@@ -177,18 +177,18 @@
   padding: 3px;
 }
 .chat-body-messages .message.start .img-message {
-  background:#f6f6f6
+  background: #f6f6f6;
 }
 .chat-body-messages .message .img-message p {
   padding: 5px;
   color: #fff;
   max-width: 100%;
-  word-wrap: break-word
+  word-wrap: break-word;
 }
-.chat-body-messages .message.start .img-message p{
+.chat-body-messages .message.start .img-message p {
   color: #000;
 }
-.plyr{
+.plyr {
   border-radius: 1vw;
 }
 .chat-body-messages .message.img.end .img-message img {
@@ -331,10 +331,10 @@
   position: relative;
   width: 100%;
 }
-.chat-body-messages .message.voice-message .forward-sender-name{
+.chat-body-messages .message.voice-message .forward-sender-name {
   position: absolute;
   top: 7px;
-  left:20px;
+  left: 20px;
 }
 .chat-body-messages .message.voice-message .voice-tiem {
   font-size: 12px;
@@ -1013,16 +1013,16 @@
   padding: 10px 15px;
   border-bottom: 1px solid #0199ec;
 }
-.forward-sender-name{
+.forward-sender-name {
   font-size: 15px;
   opacity: 0.8;
   margin-bottom: 8px;
   color: #fff;
 }
-.forward-sender-name strong{
+.forward-sender-name strong {
   font-weight: bold;
 }
-.call__screen{
+.call__screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -1030,7 +1030,7 @@
   height: 100vh;
   z-index: 9999;
 }
-.call__screen.min_call_screen{
+.call__screen.min_call_screen {
   all: unset;
   position: fixed;
   width: 400px;
@@ -1041,18 +1041,31 @@
   border-radius: 20px;
   overflow: hidden;
 }
-@media screen and (max-width: 767px){
-  .call__screen.min_call_screen{
+@media screen and (max-width: 767px) {
+  .call__screen.min_call_screen {
     width: 200px;
     height: 130px;
   }
 }
-.show__call__screen{
+.show__call__screen {
   display: block;
 }
-.hide__call_screen{
+.hide__call_screen {
   display: none;
 }
 .chat-body-container.mobile {
   height: 100vh;
+}
+.seen__message-container {
+  all: unset;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.chat-body-messages .message .seen__message-container span {
+  all: unset;
+  width: 5px;
+  height: 10px;
+  background: red;
 }

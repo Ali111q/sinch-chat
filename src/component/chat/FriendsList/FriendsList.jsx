@@ -52,7 +52,6 @@ const FriendsList = () => {
       url: `${getChat}?page=${page}`,
       method: "get",
     }).then((e) => {
-      console.log(e);
       dispatch(
         chatAction.setChatsList({
           chats: e.data.data,

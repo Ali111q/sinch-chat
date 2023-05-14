@@ -1,8 +1,7 @@
 import { httpHelper } from "../../helper/http_helper";
 import { useState, useEffect } from "react";
-import { useNavigate,useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import RequasteCo from "../../component/Requaste/requaste";
-import AppBar from "../../component/home/appBar";
 import { url } from "../../utils/constants";
 import TakeDate from "../../component/Requaste/takeDate";
 function Requaste(props) {
@@ -22,7 +21,6 @@ function Requaste(props) {
           key: "Authorization",
           value: `Bearer ${localStorage.getItem("token")}`,
         },
-
       ],
       {},
       "get"
@@ -32,16 +30,30 @@ function Requaste(props) {
   }, []);
   return (
     <>
-    <AppBar run={props.run}/>
       <div className="Requastemain">
         <div className="Requastemaincon">
-        {userDat&&(selcted?<TakeDate run={props.run} data={userDat}/>:<RequasteCo run={props.run} data={userDat} />)}
+          {userDat &&
+            (selcted ? (
+              <TakeDate run={props.run} data={userDat} />
+            ) : (
+              <RequasteCo run={props.run} data={userDat} />
+            ))}
         </div>
         <div className="AddList">
-            <ul>
-              <li onClick={()=>setselcted(e=>!e)} id={selcted?"AddListulli":""}>استشارة</li>
-              <li onClick={()=>setselcted(e=>!e)} id={selcted?"":"AddListulli"}>حجز موعد</li>
-            </ul>
+          <ul>
+            <li
+              onClick={() => setselcted((e) => !e)}
+              id={selcted ? "AddListulli" : ""}
+            >
+              استشارة
+            </li>
+            <li
+              onClick={() => setselcted((e) => !e)}
+              id={selcted ? "" : "AddListulli"}
+            >
+              حجز موعد
+            </li>
+          </ul>
         </div>
       </div>
     </>

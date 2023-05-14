@@ -1,0 +1,45 @@
+.test-card-con{
+    position: relative;
+    width:22vw;
+    height:25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vw;
+}
+.marginTop{
+    margin-top: 200px;
+}
+
+.test-card-con-info{
+    width: 20vw;
+    height: 90%;
+    padding: 4%;
+    background-color: white;
+    border-radius: 1vw;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.test-caption-click-anmation{
+    height: 13vw;
+    position: absolute;
+    transition:1s;
+    bottom: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.test-card-con-isAccepted{
+    position: absolute;
+    top: 0vw;
+    left: 1vw;
+    width: 3vw;
+    height: 3vw;
+    background-color: #00A5FF;
+    z-index: 3;
+    border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

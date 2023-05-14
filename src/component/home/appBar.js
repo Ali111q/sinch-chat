@@ -122,7 +122,7 @@ export function AppBar(props) {
                 onClick={(e) => {
                   sessionStorage.removeItem("selctedID");
                   sessionStorage.removeItem("userData");
-                  setpath("/chat/0");
+                  setpath("/chat");
                 }}
               >
                 {HomeSvgList("8vw").chatIcon}

@@ -1,0 +1,41 @@
+.img-ui{
+    position: relative;
+    background-color: rgb(242, 242, 242);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.img-ui img{
+    opacity: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    transition: 0.5s;
+}
+.img-ui span{
+    z-index: 1;
+    position: absolute;
+    top: -50%;
+    left: -30%;
+    background-color: rgb(253, 253, 253);
+    box-shadow:
+    0 0 60px 30px #fff,  /* inner white */
+    0 0 100px 60px #c2c2c2, /* middle magenta */
+    0 0 140px 90px #dfdfdf; /* outer cyan */
+    transform: rotate(30deg);
+    animation: mymove 2s infinite;
+}
+@keyframes mymove {
+    from {left: -100%;}
+    to {left: 200%;}
+  }
+
+
+
+
+
+
+
+

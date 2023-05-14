@@ -56,7 +56,6 @@ const ChatBodyMessages = () => {
           <>
             <Message key={i} data={ele} type={ele.type} />
             <h1 ref={i == messages.length - 1 ? lastElement : null}></h1>
-            {i == messages.length - 1 && <p>See</p>}
           </>
         );
       })}

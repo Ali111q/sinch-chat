@@ -6,8 +6,6 @@ function minCall() {
   const exitFullScreen = document.getElementById("exit_fullscreen");
   const body = document.body;
   exitFullScreen.addEventListener("click", () => {
-    console.log("HEllo");
-    console.log("Clicked");
     window.parent.postMessage("min_call_screen", "*");
   });
   window.addEventListener("message", function (event) {

@@ -4,7 +4,6 @@ import Desctop from "./pc";
 import Mobile from "./mob";
 import "./Chat.css";
 import { useDispatch, useSelector } from "react-redux";
-import AppBar from "../../component/home/appBar";
 import io from "socket.io-client";
 import { channelAction } from "../../store/chat/channel";
 import { chatAction } from "../../store/chat/chatSlice";
@@ -29,18 +28,22 @@ const ChatScreen = (props) => {
       dispatch(channelAction.io(socket));
     });
     socket.on("receivedMessage", (e) => {
-      dispatch(chatAction.addMS(e));
+      console.log("receivedMessage");
       console.log(e);
+
+      dispatch(chatAction.addMS(e));
     });
     socket.on("sentMessage", (e) => {
-      dispatch(chatAction.addMS(e));
       console.log(e);
+
+      dispatch(chatAction.addMS(e));
     });
     socket.on("typing", (e) => {
       console.log(e);
       dispatch(channelAction.new({ typing: e }));
     });
     socket.on("deleteMessage", (e) => {
+      console.log(e);
       dispatch(chatAction.removeMS(e));
     });
     socket.on("error", (e) => {
@@ -50,13 +53,12 @@ const ChatScreen = (props) => {
     socket.on("sentChat", (e) => {
       console.log("sendChat");
       console.log(e);
-      dispatch(chatAction.orderChats({ id: e.id }));
-      // dispatch(channelAction.new({sentChat:e}))
+      dispatch(chatAction.upDateChatsList(e));
     });
     socket.on("receivedChat", (e) => {
       console.log("receivedChat");
       console.log(e);
-      dispatch(chatAction.orderChats({ id: e.id, chat: e }));
+      dispatch(chatAction.upDateChatsList(e));
     });
   }, []);
   const isPC = useOrientationchange();

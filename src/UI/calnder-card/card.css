@@ -1,0 +1,181 @@
+.calinder-card-first-con{
+    cursor: pointer;
+    position: relative;
+    height:14%;
+    background-color: #EBF2F7;
+    width: 13%;
+    padding:1%;
+    border-radius: 0.5vw;
+    float: left;
+    margin:0.4%;
+    margin-left: 1.1%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.calinder-card-first-date{
+    width: 80%;
+    height: 80%;
+    padding-left: 5%;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.calinder-card-first-date span{ 
+    align-self: flex-start;
+    width: 70%;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+}
+.calinder-card-first-date svg{
+    margin-right: 0.5vw;
+    width: 1vw;
+}
+.calinder-card-first-line{
+    position: relative;
+    bottom: 0;
+    width: 90%;
+}
+.calinder-card-first-line-red{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 0.5vw;
+    border-radius: 1vw;
+    background-color: #FB5E1B;
+}
+.calinder-card-first-line-blue{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0.5vw;
+    border-radius: 1vw;
+    background-color: #0199EC;
+}
+.calinder-controler{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.calinder-controler-back{
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.calinder-controler-back svg{
+    width: 1vw;
+}
+.calinder-controler-forword{
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.calinder-controler-forword svg{
+    width: 1vw;
+    transform: rotateZ(180deg);
+}
+.calinder-controler-center{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.calinder-controler-center-back,.calinder-controler-center-forword{
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.3) 0px 6px 12px -2px, rgba(0, 0, 0, 0.4) 0px 3px 7px -3px;
+}
+.calinder-controler-center-back svg,.calinder-controler-center-forword svg{
+    width: 1vw;
+}
+.calinder-controler-center-forword svg{
+    transform: rotateZ(180deg);
+}
+.calinder-card-first-info-num{
+    position: absolute;
+    right: 0.5vw;
+    top: 0.5vw;
+    display: flex;
+}
+
+
+.CalinderSlide-con{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.calinder-slide-con{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+.calinder-slide-con-title{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+}
+.calinder-slide-con-title span{
+    width: 100%;
+    height: 0.1vw;
+    background-color:#575757;
+    margin-left: 1vw;
+}
+.calinder-slide-list{
+    position: relative;
+    left: 5%;
+    width: 95%;
+    height: 8vw;
+    display: flex;
+    align-items: center;
+}
+.calinder-slide-list-red,.calinder-slide-list-blue{
+    cursor: pointer;
+    margin-left: 1vw;
+    position: relative;
+    width: 16vw;
+    height: 80%;
+    padding: 1vw;
+    border-radius: 1vw;
+    overflow: hidden;
+    background-color: #fb5e1b49;
+    display: flex;
+    align-items: center;
+}
+.calinder-slide-list-blue{
+    background-color: #019aec50;
+}
+.calinder-slide-list-red span,.calinder-slide-list-blue span{
+    position: absolute;
+    width: 0.2vw;
+    height: 80%;
+    border-radius: 0.1vw;
+    left: 0;
+    background-color: #FB5E1B;
+
+}
+.calinder-slide-list-blue span{
+    background-color: #0199EC;
+}
+
+.calinder-slide-list-red div,.calinder-slide-list-blue div{
+    display: flex;
+    flex-direction: column;
+}
