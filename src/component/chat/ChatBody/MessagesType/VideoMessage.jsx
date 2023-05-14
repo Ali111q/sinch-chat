@@ -5,7 +5,12 @@ import { motion, useDragControls } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setReplay } from "../../../../store/chat/replaySlice";
 import { useRef } from "react";
-import { leftShare, rightShare } from "../../../../assets/svges/Chat_SVGs";
+import {
+  leftShare,
+  rightShare,
+  send,
+  seen,
+} from "../../../../assets/svges/Chat_SVGs";
 import Plyr from "plyr-react";
 import "plyr-react/plyr.css";
 import { useEffect } from "react";
@@ -84,11 +89,12 @@ const VideoMessage = ({ data }) => {
   return (
     <>
       <motion.div
+        style={{ touchAction: "none" }}
         drag="x"
         dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
         onDragEnd={startDrag}
         className={`message video ${data.type === 2 && "img"} ${
-          data?.is_sender ? "start" : "end"
+          data?.is_sender ? "end" : "start"
         }`}
         ref={eleRef}
         onContextMenu={handleRightClick}
@@ -103,7 +109,18 @@ const VideoMessage = ({ data }) => {
             </p>
           )}
           <Plyr {...plyrProps} />
-          {data.type === 5 ? <p>{data.forward.body}</p> : <p>{data.body}</p>}
+          <p>
+            {data.type === 5 ? data.forward.body : data.body}
+            {data.is_sender && (
+              <div
+                className={`seen__message ${
+                  data.is_seen ? "seened" : "notSeen"
+                }`}
+              >
+                {data.is_seen ? seen : send}
+              </div>
+            )}
+          </p>
         </div>
         <span>{data?.time}</span>
         <OptionList

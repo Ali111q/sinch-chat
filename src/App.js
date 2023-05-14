@@ -32,12 +32,17 @@ import Call from "./view/call";
 import Notification from "./IFrame/Notification";
 import Sheets from "./view/mySheet/sheets";
 import AppBar from "./component/home/appBar";
+import useOrientationchange from "./hooks/orientationchange";
 document.cookie = `userData=${localStorage.getItem(
   "userData"
 )}; domain=192.168.0.190; path=/;`;
 
 // console.log(JSON.parse(document.cookie || null));
+
+const routes = ["chat", "storyScreen"];
 export function App() {
+  const path = useLocation().pathname;
+  const isPC = useOrientationchange();
   const location = useLocation();
   const [go, setgo] = useState(false);
   useEffect(() => {
@@ -60,7 +65,12 @@ export function App() {
     <>
       {/* <NOT /> */}
       {/* <Intro run={setgo} go={go} /> */}
-      <AppBar run={setgo} />
+      {!isPC && (path.includes("chat") || path.includes("storyScreen")) ? (
+        <></>
+      ) : (
+        <AppBar run={setgo} />
+      )}
+      {/* <AppBar run={setgo} /> */}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/Drugs" element={<Drugs />} />

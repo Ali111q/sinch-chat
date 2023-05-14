@@ -3,6 +3,7 @@ import ChatBody from "../../component/chat/ChatBody/ChatBody";
 import FriendsList from "../../component/chat/FriendsList/FriendsList";
 import "./Chat.css";
 import { useDispatch, useSelector } from "react-redux";
+import AppBar from "../../component/home/appBar";
 const Mobile = () => {
   const [showChatBody, setShowChatBody] = useState(false);
   const { chat_id } = useSelector((state) => state.chat.data.chatData);
@@ -21,6 +22,7 @@ const Mobile = () => {
         </div>
       ) : (
         <>
+          <AppBar />
           <div className="nchat mobile">
             <div className="ncontainer">
               <div className="chat__list">

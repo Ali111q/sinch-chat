@@ -230,8 +230,30 @@
   background: #0199ec;
   color: #fff;
 }
+.chat-body-messages .message {
+  display: flex;
+  justify-content: center;
+}
 .chat-body-messages .message.end {
   align-self: end;
+}
+.seen__message {
+  margin-left: 10px;
+  position: relative;
+  bottom: -5px;
+  text-align: end;
+}
+.seen__message svg {
+  width: 15px;
+  height: 15px;
+}
+.seen__message.notSeen svg {
+  width: 11px;
+  height: 11px;
+}
+.chat-body-container .chat-body-messages .message.replay h6 {
+  display: flex;
+  justify-content: center;
 }
 .chat-body-messages .message.start {
   align-self: start;
@@ -1055,17 +1077,4 @@
 }
 .chat-body-container.mobile {
   height: 100vh;
-}
-.seen__message-container {
-  all: unset;
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-}
-
-.chat-body-messages .message .seen__message-container span {
-  all: unset;
-  width: 5px;
-  height: 10px;
-  background: red;
 }

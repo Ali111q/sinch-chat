@@ -102,10 +102,14 @@ viewBox="0 0 24 24"
 />
 </svg>`;
 let type = "audio";
-let my_image = "";
+// call time counter
 let second = 0;
-const image = temp.slice(temp.indexOf("h"), temp.indexOf("&"));
+// camera check
+let isCameraOff;
 export default class VideoCallUI {
+  /***
+   * @param sinchClientWrapper to start connection ot with sinch
+   */
   constructor(sinchClientWrapper) {
     this.sinchClientWrapper = sinchClientWrapper;
     this.handleMakeCallClick();
@@ -117,6 +121,8 @@ export default class VideoCallUI {
     setState("call", DISABLE);
     setState("answer", DISABLE);
     setState("hangup", DISABLE);
+    /*
+    // old code may we need
     this.params = JSON.parse(
       `{ ${window.location.search
         .replaceAll("=", ":")
@@ -133,26 +139,55 @@ export default class VideoCallUI {
         )
         .join(",")}}`
     );
-    this.isCameraOff = type === "audio" ? true : false;
-    this.params.image = image;
-    this.params.my_image = my_image;
+    */
+    const p = JSON.parse(document.cookie.split("userToCall=")[1] || "{}");
+    console.log(p);
+    this.params = {
+      user_id: p.user_id,
+      rec_id: `user-${p?.id}`,
+      image: p?.image,
+      name: p?.name,
+      token: p?.token,
+    };
     document.getElementById(
       "caller_name"
-    ).innerHTML = `${this.params.name} <span></span>`;
-    document.getElementById("caller_image").src = this.params.image;
+    ).innerHTML = `${p.name} <span></span>`;
+    document.getElementById("caller_image").src = p.image;
   }
-
+  // When user connect with sinch successful
   onClientStarted(sinchClient) {
     this.setStatus(`Client started for ${sinchClient.userId}`);
     setText("statusclient-userid", `${sinchClient.userId}`);
     setState("call", ENABLE);
     setVisibility("callcontrol", SHOW);
     setVisibility("calldestination", SHOW);
-    window.addEventListener("message", function (event) {
+    window.addEventListener("message", async function (event) {
       const data = JSON.parse(event.data);
       if (data.message === "start_call") {
-        this.isCameraOff = data.type === "audio" ? true : false;
-        my_image = data.image;
+        isCameraOff = data.type === "audio" ? true : false;
+        const p = JSON.parse(document.cookie.split("userToCall=")[1] || "{}");
+        console.log(p);
+        this.params = {
+          rec_id: `user-${p?.id}`,
+          image: p?.image,
+          name: p?.name,
+          token: p?.token,
+          user_id: p?.user_id,
+        };
+        await fetch(`${ip}:8000/api/call/send`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${p.token}`,
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to_user: +p.id,
+            from_user: +p.user_id.slice(p.user_id.indexOf("-") + 1),
+            message: data.type,
+            type: "callType",
+          }),
+        });
         document.getElementById("call").click();
       }
     });
@@ -173,10 +208,14 @@ export default class VideoCallUI {
         const imageCircle = document.getElementById("circle__image-incoming");
         videoImageContainer && (videoImageContainer.style.display = "none");
         imageCircle && (imageCircle.style.display = "none");
+      } else if (data.message === "audio") {
+        isCameraOff = true;
+      } else if (data.message === "video") {
+        isCameraOff = false;
       }
     });
   }
-
+  // for make call with another user
   async makeCall() {
     const callee = this.getCallee();
     this.setStatus(`Make call to ${callee}`);
@@ -201,6 +240,7 @@ export default class VideoCallUI {
       }
     });
   }
+  // when user receive a call this function work
   onIncomingCall(call) {
     this.setStatus(`Incoming call from ${call.remoteUserId}`);
     this.handleAnswerClick(call);
@@ -213,29 +253,21 @@ export default class VideoCallUI {
     this.playStream(call.incomingStream, "incoming", false, false);
     this.playStream(call.outgoingStream, "outgoing", false, false);
     this.muteVideoStream("outgoing-video");
-    fetch(
-      `${url}/get-data-by-id?id=${this.params.rec_id.slice(
-        this.params.rec_id.indexOf("-") + 1
-      )}`
-    )
-      .then((e) => e.json())
-      .then((data) => {
-        document.getElementById("caller_image").src = data.data.image;
-        document.getElementById("caller_name").innerHTML =
-          data.data.full_name ?? "No Name" + " <span></span>";
-      });
     document.body.classList.add("recive_call");
     window.parent.postMessage("reciveCall", "*");
     window.addEventListener("message", function (event) {
       if (event.data === "close-call") {
         this.handleHangupClick();
+        window.parent.postMessage("end__call", "*");
+        window.location.reload();
       }
     });
   }
-
+  // when call progressing
   onCallProgressing(call) {
     this.setStatus(`Call progressing ${call.remoteUserId}`);
   }
+  // when call start successful and established
   onCallEstablished(call, sinchClient) {
     this.setStatus(`Call established with ${call.remoteUserId}`);
     document.body.classList.remove("recive_call");
@@ -260,10 +292,13 @@ export default class VideoCallUI {
     setAnswerPulse(IDLE);
     window.addEventListener("message", function (event) {
       if (event.data === "close-call") {
-        this.handleHangupClick();
+        this.handleHangupClick(call);
+        window.parent.postMessage("end__call", "*");
+        window.location.reload();
       }
     });
   }
+  // when call end
   onCallEnded(call) {
     this.setStatus(`Call ended ${call.remoteUserId}`);
     this.pauseRingtone();
@@ -281,7 +316,7 @@ export default class VideoCallUI {
     window.parent.postMessage("end__call", "*");
     window.location.reload();
   }
-
+  // initials the out going stream and in coming stream
   playStream(stream, direction, mute = true, emptyContainer = true) {
     const video = document.createElement("video");
     const videoElement = document.createElement("div");
@@ -297,14 +332,19 @@ export default class VideoCallUI {
     circleImage.setAttribute("id", `circle__image-container`);
     imgCircle.setAttribute("class", "circle__image-img");
     imgCircle.setAttribute("id", `circle__image-img`);
-    const userData = JSON.parse(document.cookie.split("userData=")[1]);
+    const userData = JSON.parse(
+      document.cookie
+        .split("userData=")[1]
+        .split("userToCall=")[0]
+        .split(";")[0] || "{}"
+    );
     if (direction === "incoming") {
-      videoImage.src = image;
-      imgCircle.src = image;
+      videoImage.src = this.params.image;
+      imgCircle.src = this.params.image;
       circleContainer.appendChild(this.time);
     } else {
-      videoImage.src = userData.image;
-      imgCircle.src = userData.image;
+      videoImage.src = userData?.image;
+      imgCircle.src = userData?.image;
     }
     circleImage.appendChild(imgCircle);
     circleContainer.appendChild(circleImage);
@@ -332,7 +372,6 @@ export default class VideoCallUI {
 
     container.appendChild(videoElement);
   }
-
   setStatus(text) {
     setText("statusheader", text);
     console.log(`Status: ${text}`);
@@ -341,6 +380,7 @@ export default class VideoCallUI {
   setText(id, text) {
     document.getElementById(id).innerHTML = text;
   }
+  // this for make a call
   handleMakeCallClick() {
     document
       .getElementById("call")
@@ -399,8 +439,7 @@ export default class VideoCallUI {
       body: JSON.stringify({
         to_user: +this.params.rec_id.slice(this.params.rec_id.indexOf("-") + 1),
         from_user: +this.params.user_id.slice(
-          this.params.rec_id.indexOf("-") + 1,
-          this.params.rec_id.indexOf("}")
+          this.params.user_id.indexOf("-") + 1
         ),
         message: action,
         type: "camera",
@@ -417,16 +456,16 @@ export default class VideoCallUI {
     const imageCircle = document.getElementById("circle__image-outgoing");
     video.removeEventListener("click", this.handleCloseVideo);
     this.handleCloseVideo = () => {
-      if (this.isCameraOff) {
+      if (isCameraOff) {
         call?.pauseVideo();
-        this.isCameraOff = false;
+        isCameraOff = false;
         video.innerHTML = onCamera;
         this.handleVideoNotification("cameraOff");
         videoImageContainer && (videoImageContainer.style.display = "block");
         imageCircle && (imageCircle.style.display = "flex");
       } else {
         call?.resumeVideo();
-        this.isCameraOff = true;
+        isCameraOff = true;
         video.innerHTML = offCamera;
         this.handleVideoNotification("cameraOn");
         videoImageContainer && (videoImageContainer.style.display = "none");

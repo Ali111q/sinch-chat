@@ -66,7 +66,7 @@ const IFrame = () => {
       >
         <iframe
           allow="camera;microphone"
-          src={`http://192.168.0.190:55687/?user_id=user-${id}&rec_id=user-${user.id}&image=${user.image}&name=${user.name}&type=${callType}&token=${token}`}
+          src={`http://192.168.0.190:55687/?user_id=user-${id}`}
           frameborder="0"
           style={{ width: "100%", height: "100%" }}
         ></iframe>

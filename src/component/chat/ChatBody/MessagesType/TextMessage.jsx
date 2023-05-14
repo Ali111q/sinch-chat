@@ -3,11 +3,15 @@ import { motion, useDragControls } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setReplay } from "../../../../store/chat/replaySlice";
 import { useRef } from "react";
-import { leftShare, rightShare } from "../../../../assets/svges/Chat_SVGs";
+import {
+  leftShare,
+  rightShare,
+  seen,
+  send,
+} from "../../../../assets/svges/Chat_SVGs";
 import Forward from "../Forward/Forward";
 import OptionList from "./optionList";
 import { chatAction } from "../../../../store/chat/chatSlice";
-import SeenMessage from "./SeenMessage";
 
 const TextMessage = ({ data }) => {
   const [showOptions, setShowOptions] = useState(false);
@@ -61,6 +65,7 @@ const TextMessage = ({ data }) => {
     <>
       <motion.div
         drag="x"
+        style={{ touchAction: "none" }}
         onDragEnd={startDrag}
         dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
         className={`message ${
@@ -84,7 +89,13 @@ const TextMessage = ({ data }) => {
         <h6>
           {data.type === 5 ? data.forward?.body : data?.body}-({data.id})
         </h6>
-        <SeenMessage />
+        {data.is_sender && (
+          <div
+            className={`seen__message ${data.is_seen ? "seened" : "notSeen"}`}
+          >
+            {data.is_seen ? seen : send}
+          </div>
+        )}
         <span>{data?.time}</span>
         <OptionList
           data={data}

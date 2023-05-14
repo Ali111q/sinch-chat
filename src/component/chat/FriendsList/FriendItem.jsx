@@ -9,6 +9,7 @@ import { getMessages } from "../../../utils/constants";
 import { useLocation } from "react-router-dom";
 import { deleteM } from "../../../assets/svges/Chat_SVGs/index";
 const FriendItem = ({ data }) => {
+  const { token, id } = JSON.parse(localStorage.getItem("userData"));
   const io = useSelector((state) => state.channel.data.io);
   const { chatID, userID } = useSelector((state) => state.chat.chatRightMenu);
   const dispatch = useDispatch();
@@ -37,6 +38,11 @@ const FriendItem = ({ data }) => {
             messages: e.data.data,
           })
         );
+        document.cookie = `userToCall=${JSON.stringify({
+          ...data.users[0],
+          token,
+          user_id: "user-" + id,
+        })}; domain=192.168.0.190; path=/;`;
       });
     }
   };

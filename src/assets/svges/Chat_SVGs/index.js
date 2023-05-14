@@ -325,3 +325,54 @@ export const deleteM = (
     />
   </svg>
 );
+export const send = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    id="Sent"
+    width="8.076"
+    height="5.938"
+    viewBox="0 0 8.076 5.938"
+  >
+    <path
+      id="check_1_"
+      data-name="check (1)"
+      d="M10.288,5.509a.434.434,0,0,1,.037.618L5.758,11.2a.434.434,0,0,1-.62.026L2.5,8.733a.438.438,0,0,1,.593-.645l2.05,1.844A.434.434,0,0,0,5.752,9.9L9.68,5.545a.434.434,0,0,1,.609-.036Z"
+      transform="translate(-2.36 -5.401)"
+      fill="#fff"
+      fill-rule="evenodd"
+    />
+  </svg>
+);
+export const seen = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="10.986"
+    height="5.938"
+    viewBox="0 0 10.986 5.938"
+  >
+    <g
+      id="Group_119456"
+      data-name="Group 119456"
+      transform="translate(13647 4848.93)"
+    >
+      <g id="Seen" transform="translate(-13647 -4848.93)">
+        <path
+          id="check_1_"
+          data-name="check (1)"
+          d="M10.288,5.509a.434.434,0,0,1,.037.618L5.758,11.2a.434.434,0,0,1-.62.026L2.5,8.733a.438.438,0,0,1,.593-.645l2.05,1.844A.434.434,0,0,0,5.752,9.9L9.68,5.545a.434.434,0,0,1,.609-.036Z"
+          transform="translate(-2.36 -5.401)"
+          fill="#fff"
+          fill-rule="evenodd"
+        />
+        <path
+          id="check_1_2"
+          data-name="check (1)"
+          d="M9.93,5.509a.434.434,0,0,1,.037.618L5.4,11.2a.434.434,0,0,1-.62.026L3.2,9.507c-.165-.155.1.177.244,0,.156-.2.01-.46.2-.293l1.142.718A.434.434,0,0,0,5.394,9.9L9.322,5.545a.434.434,0,0,1,.609-.036Z"
+          transform="translate(0.907 -5.401)"
+          fill="#fff"
+          fill-rule="evenodd"
+        />
+      </g>
+    </g>
+  </svg>
+);
